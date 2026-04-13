@@ -1,1403 +1,787 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>جدول المراجعة</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>جدول المراجعة</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-      body {
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: linear-gradient(
-          135deg,
-          #f0f4ff 0%,
-          #e8f0fe 50%,
-          #ede9fe 100%
-        );
-        min-height: 100vh;
-        color: #1e293b;
-        direction: rtl;
-      }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #ede9fe 100%);
+      min-height: 100vh;
+      color: #1e293b;
+      direction: rtl;
+    }
 
-      /* HEADER */
-      .header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid #e2e8f0;
-        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
-        padding: 16px 20px 0;
-      }
-      .header-inner {
-        max-width: 860px;
-        margin: 0 auto;
-      }
-      .header-top {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        margin-bottom: 12px;
-      }
-      .site-title {
-        font-size: 24px;
-        font-weight: 800;
-        background: linear-gradient(135deg, #6366f1, #4f46e5);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .site-subtitle {
-        font-size: 13px;
-        color: #64748b;
-        margin-top: 2px;
-      }
-      .progress-stat {
-        text-align: left;
-      }
-      .progress-percent {
-        font-size: 26px;
-        font-weight: 800;
-        color: #6366f1;
-      }
-      .progress-count {
-        font-size: 12px;
-        color: #94a3b8;
-        margin-top: 1px;
-      }
-      .progress-bar-wrap {
-        width: 100%;
-        height: 10px;
-        background: #e2e8f0;
-        border-radius: 99px;
-        overflow: hidden;
-        margin-bottom: 0;
-      }
-      .progress-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #6366f1, #818cf8);
-        border-radius: 99px;
-        transition: width 0.7s ease;
-      }
+    /* HEADER */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+      padding: 16px 20px 0;
+    }
+    .header-inner { max-width: 860px; margin: 0 auto; }
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .site-title {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .site-subtitle { font-size: 13px; color: #64748b; margin-top: 2px; }
+    .progress-stat { text-align: left; }
+    .progress-percent { font-size: 26px; font-weight: 800; color: #6366f1; }
+    .progress-count { font-size: 12px; color: #94a3b8; margin-top: 1px; }
+    .progress-bar-wrap {
+      width: 100%; height: 10px;
+      background: #e2e8f0; border-radius: 99px; overflow: hidden;
+      margin-bottom: 0;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #818cf8);
+      border-radius: 99px;
+      transition: width 0.7s ease;
+    }
 
-      /* MAIN TABS */
-      .main-tabs {
-        display: flex;
-        gap: 0;
-        margin-top: 14px;
-        border-top: 1px solid #e2e8f0;
-      }
-      .main-tab-btn {
-        flex: 1;
-        padding: 12px 0;
-        font-size: 15px;
-        font-weight: 700;
-        border: none;
-        cursor: pointer;
-        background: transparent;
-        color: #94a3b8;
-        border-bottom: 3px solid transparent;
-        transition: all 0.2s;
-      }
-      .main-tab-btn.active {
-        color: #6366f1;
-        border-bottom-color: #6366f1;
-      }
-      .main-tab-btn:hover:not(.active) {
-        color: #475569;
-      }
+    /* MAIN TABS */
+    .main-tabs {
+      display: flex;
+      gap: 0;
+      margin-top: 14px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .main-tab-btn {
+      flex: 1;
+      padding: 12px 0;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: #94a3b8;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .main-tab-btn.active {
+      color: #6366f1;
+      border-bottom-color: #6366f1;
+    }
+    .main-tab-btn:hover:not(.active) { color: #475569; }
 
-      /* WEEK NAV */
-      .week-nav {
-        position: sticky;
-        top: 128px;
-        z-index: 40;
-        background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid #e2e8f0;
-        padding: 10px 20px;
-      }
-      .week-nav-inner {
-        max-width: 860px;
-        margin: 0 auto;
-        display: flex;
-        gap: 8px;
-        overflow-x: auto;
-        scrollbar-width: none;
-      }
-      .week-nav-inner::-webkit-scrollbar {
-        display: none;
-      }
-      .week-btn {
-        flex-shrink: 0;
-        padding: 6px 16px;
-        border-radius: 99px;
-        font-size: 14px;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s;
-        background: #f1f5f9;
-        color: #475569;
-      }
-      .week-btn:hover {
-        background: #e2e8f0;
-      }
-      .week-btn.active {
-        background: #6366f1;
-        color: white;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-      }
-      .week-btn.all-done {
-        background: #d1fae5;
-        color: #065f46;
-        border: 1px solid #a7f3d0;
-      }
-      .week-btn.all-done.active {
-        background: #6366f1;
-        color: white;
-        border: none;
-      }
+    /* WEEK NAV */
+    .week-nav {
+      position: sticky;
+      top: 128px;
+      z-index: 40;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 20px;
+    }
+    .week-nav-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; gap: 8px;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .week-nav-inner::-webkit-scrollbar { display: none; }
+    .week-btn {
+      flex-shrink: 0;
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 14px; font-weight: 600;
+      border: none; cursor: pointer;
+      transition: all 0.2s;
+      background: #f1f5f9; color: #475569;
+    }
+    .week-btn:hover { background: #e2e8f0; }
+    .week-btn.active {
+      background: #6366f1; color: white;
+      box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+    }
+    .week-btn.all-done {
+      background: #d1fae5; color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .week-btn.all-done.active { background: #6366f1; color: white; border: none; }
 
-      /* MAIN */
-      main {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 24px 20px 60px;
-      }
+    /* MAIN */
+    main { max-width: 860px; margin: 0 auto; padding: 24px 20px 60px; }
 
-      /* PAGE SECTIONS */
-      .page {
-        display: none;
-      }
-      .page.active {
-        display: block;
-      }
+    /* PAGE SECTIONS */
+    .page { display: none; }
+    .page.active { display: block; }
 
-      .week-section {
-        margin-bottom: 36px;
-      }
-      .week-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 12px;
-      }
-      .week-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: #1e293b;
-      }
-      .week-count {
-        font-size: 13px;
-        color: #64748b;
-        background: #f1f5f9;
-        padding: 3px 12px;
-        border-radius: 99px;
-      }
+    .week-section { margin-bottom: 36px; }
+    .week-header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 12px;
+    }
+    .week-title { font-size: 18px; font-weight: 700; color: #1e293b; }
+    .week-count {
+      font-size: 13px; color: #64748b;
+      background: #f1f5f9; padding: 3px 12px; border-radius: 99px;
+    }
 
-      /* DAY CARD */
-      .day-card {
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        margin-bottom: 12px;
-        transition: all 0.3s;
-      }
-      .day-card.is-today {
-        border-color: #a5b4fc;
-        background: #f5f3ff;
-        box-shadow:
-          0 0 0 2px #c7d2fe,
-          0 4px 16px rgba(99, 102, 241, 0.12);
-      }
-      .day-card.is-done {
-        border-color: #a7f3d0;
-        background: #f0fdf4;
-      }
-      .day-card.is-past:not(.is-done):not(.is-today) {
-        background: #fafafa;
-        border-color: #e5e7eb;
-      }
+    /* DAY CARD */
+    .day-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .day-card.is-today {
+      border-color: #a5b4fc;
+      background: #f5f3ff;
+      box-shadow: 0 0 0 2px #c7d2fe, 0 4px 16px rgba(99,102,241,0.12);
+    }
+    .day-card.is-done { border-color: #a7f3d0; background: #f0fdf4; }
+    .day-card.is-past:not(.is-done):not(.is-today) { background: #fafafa; border-color: #e5e7eb; }
 
-      .day-inner {
-        padding: 16px;
-      }
-      .day-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 14px;
-      }
-      .day-header-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .day-num {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        font-weight: 700;
-        color: white;
-        background: linear-gradient(135deg, #6366f1, #4f46e5);
-        flex-shrink: 0;
-      }
-      .day-card.is-done .day-num {
-        background: linear-gradient(135deg, #10b981, #059669);
-      }
-      .day-date {
-        font-size: 14px;
-        font-weight: 600;
-        color: #1e293b;
-      }
-      .today-badge {
-        font-size: 12px;
-        color: #6366f1;
-        font-weight: 600;
-      }
-      .done-badge {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 12px;
-        font-weight: 600;
-        color: #059669;
-        background: #d1fae5;
-        padding: 4px 10px;
-        border-radius: 99px;
-      }
-      .done-badge svg {
-        width: 13px;
-        height: 13px;
-      }
+    .day-inner { padding: 16px; }
+    .day-header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 14px;
+    }
+    .day-header-left { display: flex; align-items: center; gap: 10px; }
+    .day-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: white;
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      flex-shrink: 0;
+    }
+    .day-card.is-done .day-num { background: linear-gradient(135deg, #10b981, #059669); }
+    .day-date { font-size: 14px; font-weight: 600; color: #1e293b; }
+    .today-badge { font-size: 12px; color: #6366f1; font-weight: 600; }
+    .done-badge {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 12px; font-weight: 600;
+      color: #059669; background: #d1fae5;
+      padding: 4px 10px; border-radius: 99px;
+    }
+    .done-badge svg { width: 13px; height: 13px; }
 
-      /* TASKS */
-      .tasks-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .task-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 14px;
-        border-radius: 12px;
-        border: 1px solid #f1f5f9;
-        background: white;
-        transition: all 0.2s;
-      }
-      .task-row:hover:not(.task-done) {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      }
-      .task-row.task-done {
-        background: #f8fafc;
-        border-color: #f1f5f9;
-      }
-      .task-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .task-stripe {
-        width: 4px;
-        height: 32px;
-        border-radius: 99px;
-        flex-shrink: 0;
-      }
-      .task-name {
-        font-size: 14px;
-        font-weight: 500;
-        color: #334155;
-      }
-      .task-done .task-name {
-        text-decoration: line-through;
-        color: #94a3b8;
-      }
-      .subject-tag {
-        font-size: 10px;
-        padding: 2px 8px;
-        border-radius: 6px;
-        border: 1px solid;
-        font-weight: 500;
-      }
-      .task-done .subject-tag {
-        opacity: 0.4;
-      }
+    /* TASKS */
+    .tasks-list { display: flex; flex-direction: column; gap: 8px; }
+    .task-row {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px; border-radius: 12px;
+      border: 1px solid #f1f5f9; background: white;
+      transition: all 0.2s;
+    }
+    .task-row:hover:not(.task-done) { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .task-row.task-done { background: #f8fafc; border-color: #f1f5f9; }
+    .task-left { display: flex; align-items: center; gap: 10px; }
+    .task-stripe { width: 4px; height: 32px; border-radius: 99px; flex-shrink: 0; }
+    .task-name { font-size: 14px; font-weight: 500; color: #334155; }
+    .task-done .task-name { text-decoration: line-through; color: #94a3b8; }
+    .subject-tag {
+      font-size: 10px; padding: 2px 8px;
+      border-radius: 6px; border: 1px solid; font-weight: 500;
+    }
+    .task-done .subject-tag { opacity: 0.4; }
 
-      /* Subject colors */
-      .color-chemistry .task-stripe {
-        background: linear-gradient(180deg, #10b981, #059669);
-      }
-      .color-chemistry .subject-tag {
-        background: #d1fae5;
-        color: #065f46;
-        border-color: #a7f3d0;
-      }
-      .color-physics .task-stripe {
-        background: linear-gradient(180deg, #3b82f6, #2563eb);
-      }
-      .color-physics .subject-tag {
-        background: #dbeafe;
-        color: #1e40af;
-        border-color: #bfdbfe;
-      }
-      .color-biology .task-stripe {
-        background: linear-gradient(180deg, #a855f7, #9333ea);
-      }
-      .color-biology .subject-tag {
-        background: #f3e8ff;
-        color: #6b21a8;
-        border-color: #e9d5ff;
-      }
-      .color-arabic .task-stripe {
-        background: linear-gradient(180deg, #f59e0b, #d97706);
-      }
-      .color-arabic .subject-tag {
-        background: #fef3c7;
-        color: #92400e;
-        border-color: #fde68a;
-      }
-      .color-islamic .task-stripe {
-        background: linear-gradient(180deg, #14b8a6, #0d9488);
-      }
-      .color-islamic .subject-tag {
-        background: #ccfbf1;
-        color: #134e4a;
-        border-color: #99f6e4;
-      }
-      .color-review .task-stripe {
-        background: linear-gradient(180deg, #f43f5e, #e11d48);
-      }
-      .color-review .subject-tag {
-        background: #ffe4e6;
-        color: #9f1239;
-        border-color: #fecdd3;
-      }
+    /* Subject colors */
+    .color-chemistry .task-stripe { background: linear-gradient(180deg, #10b981, #059669); }
+    .color-chemistry .subject-tag { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+    .color-physics .task-stripe { background: linear-gradient(180deg, #3b82f6, #2563eb); }
+    .color-physics .subject-tag { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+    .color-biology .task-stripe { background: linear-gradient(180deg, #a855f7, #9333ea); }
+    .color-biology .subject-tag { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+    .color-arabic .task-stripe { background: linear-gradient(180deg, #f59e0b, #d97706); }
+    .color-arabic .subject-tag { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .color-islamic .task-stripe { background: linear-gradient(180deg, #14b8a6, #0d9488); }
+    .color-islamic .subject-tag { background: #ccfbf1; color: #134e4a; border-color: #99f6e4; }
+    .color-review .task-stripe { background: linear-gradient(180deg, #f43f5e, #e11d48); }
+    .color-review .subject-tag { background: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
+    .color-math .task-stripe { background: linear-gradient(180deg, #f97316, #ea580c); }
+    .color-math .subject-tag { background: #ffedd5; color: #9a3412; border-color: #fed7aa; }
 
-      /* COMPLETE BUTTON */
-      .complete-btn {
-        flex-shrink: 0;
-        padding: 7px 14px;
-        border-radius: 10px;
-        font-size: 12px;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .complete-btn.not-done {
-        background: #6366f1;
-        color: white;
-        box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-      }
-      .complete-btn.not-done:hover {
-        background: #4f46e5;
-        transform: scale(1.03);
-      }
-      .complete-btn.not-done:active {
-        transform: scale(0.97);
-      }
-      .complete-btn.is-done {
-        background: #d1fae5;
-        color: #059669;
-        border: 1px solid #a7f3d0;
-      }
-      .complete-btn.is-done:hover {
-        background: #fee2e2;
-        color: #dc2626;
-        border-color: #fca5a5;
-      }
-      .complete-btn.is-done:hover .done-text {
-        display: none;
-      }
-      .complete-btn.is-done:hover .undo-text {
-        display: flex;
-      }
-      .complete-btn.is-done .undo-text {
-        display: none;
-      }
-      .complete-btn.is-done .done-text {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .complete-btn svg {
-        width: 13px;
-        height: 13px;
-      }
+    /* COMPLETE BUTTON */
+    .complete-btn {
+      flex-shrink: 0; padding: 7px 14px; border-radius: 10px;
+      font-size: 12px; font-weight: 600; border: none; cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .complete-btn.not-done {
+      background: #6366f1; color: white;
+      box-shadow: 0 2px 6px rgba(99,102,241,0.3);
+    }
+    .complete-btn.not-done:hover { background: #4f46e5; transform: scale(1.03); }
+    .complete-btn.not-done:active { transform: scale(0.97); }
+    .complete-btn.is-done {
+      background: #d1fae5; color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+    .complete-btn.is-done:hover {
+      background: #fee2e2; color: #dc2626;
+      border-color: #fca5a5;
+    }
+    .complete-btn.is-done:hover .done-text { display: none; }
+    .complete-btn.is-done:hover .undo-text { display: flex; }
+    .complete-btn.is-done .undo-text { display: none; }
+    .complete-btn.is-done .done-text { display: flex; align-items: center; gap: 4px; }
+    .complete-btn svg { width: 13px; height: 13px; }
 
-      /* ===== ROUTINE PAGE ===== */
-      .routine-page {
-        padding-top: 4px;
-      }
+    /* ===== ROUTINE PAGE ===== */
+    .routine-page { padding-top: 4px; }
 
-      .routine-section {
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 20px;
-        margin-bottom: 16px;
-        overflow: hidden;
-      }
+    .routine-section {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
 
-      .routine-section-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 14px 18px;
-        font-size: 15px;
-        font-weight: 700;
-        color: white;
-      }
+    .routine-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+    }
 
-      .rs-morning {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-      }
-      .rs-study1 {
-        background: linear-gradient(135deg, #6366f1, #4f46e5);
-      }
-      .rs-duhr {
-        background: linear-gradient(135deg, #14b8a6, #0d9488);
-      }
-      .rs-study2 {
-        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      }
-      .rs-asr {
-        background: linear-gradient(135deg, #10b981, #059669);
-      }
-      .rs-maghrib {
-        background: linear-gradient(135deg, #f43f5e, #e11d48);
-      }
-      .rs-night {
-        background: linear-gradient(135deg, #1e293b, #334155);
-      }
+    .rs-morning { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .rs-study1  { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+    .rs-break   { background: linear-gradient(135deg, #ec4899, #db2777); }
+    .rs-duhr    { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+    .rs-study2  { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+    .rs-asr     { background: linear-gradient(135deg, #10b981, #059669); }
+    .rs-maghrib { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+    .rs-night   { background: linear-gradient(135deg, #1e293b, #334155); }
 
-      .routine-items {
-        padding: 6px 0;
-      }
+    .routine-items { padding: 6px 0; }
 
-      .routine-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 12px 18px;
-        border-bottom: 1px solid #f1f5f9;
-        transition: background 0.15s;
-      }
-      .routine-item:last-child {
-        border-bottom: none;
-      }
-      .routine-item:hover {
-        background: #fafafa;
-      }
+    .routine-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 18px;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.15s;
+    }
+    .routine-item:last-child { border-bottom: none; }
+    .routine-item:hover { background: #fafafa; }
 
-      .routine-time {
-        font-size: 12px;
-        font-weight: 700;
-        color: #6366f1;
-        background: #ede9fe;
-        padding: 3px 8px;
-        border-radius: 8px;
-        white-space: nowrap;
-        flex-shrink: 0;
-        margin-top: 1px;
-      }
-      .routine-time.no-time {
-        background: transparent;
-        color: transparent;
-        width: 0;
-        padding: 0;
-      }
+    .routine-time {
+      font-size: 12px;
+      font-weight: 700;
+      color: #6366f1;
+      background: #ede9fe;
+      padding: 3px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .routine-time.no-time {
+      background: transparent;
+      color: transparent;
+      width: 0; padding: 0;
+    }
 
-      .routine-text {
-        font-size: 14px;
-        color: #334155;
-        line-height: 1.5;
-        flex: 1;
-      }
-      .routine-emoji {
-        font-size: 16px;
-        margin-left: 4px;
-      }
+    .routine-text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .routine-emoji { font-size: 16px; margin-left: 4px; }
 
-      .routine-why {
-        background: linear-gradient(135deg, #f0f4ff, #ede9fe);
-        border: 1px solid #c7d2fe;
-        border-radius: 16px;
-        padding: 18px 20px;
-        margin-top: 8px;
-        margin-bottom: 24px;
-      }
-      .routine-why-title {
-        font-size: 15px;
-        font-weight: 700;
-        color: #4f46e5;
-        margin-bottom: 12px;
-      }
-      .routine-why-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        margin-bottom: 8px;
-        font-size: 13px;
-        color: #475569;
-        line-height: 1.5;
-      }
-      .routine-why-dot {
-        width: 6px;
-        height: 6px;
-        background: #6366f1;
-        border-radius: 50%;
-        flex-shrink: 0;
-        margin-top: 6px;
-      }
+    .routine-why {
+      background: linear-gradient(135deg, #f0f4ff, #ede9fe);
+      border: 1px solid #c7d2fe;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+    .routine-why-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4f46e5;
+      margin-bottom: 12px;
+    }
+    .routine-why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .routine-why-dot {
+      width: 6px; height: 6px;
+      background: #6366f1;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
 
-      footer {
-        text-align: center;
-        padding: 24px;
-        font-size: 12px;
-        color: #94a3b8;
-      }
+    footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; }
 
-      @media (max-width: 600px) {
-        .site-title {
-          font-size: 20px;
-        }
-        .progress-percent {
-          font-size: 22px;
-        }
-        .task-name {
-          font-size: 13px;
-        }
-        .routine-item {
-          gap: 8px;
-          padding: 10px 14px;
-        }
-        .routine-section-header {
-          padding: 12px 14px;
-          font-size: 14px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header-inner">
-        <div class="header-top">
-          <div>
-            <div class="site-title">جدول المراجعة</div>
-            <div class="site-subtitle">12 أبريل – 31 مايو 2026</div>
-          </div>
-          <div class="progress-stat" id="progressWrap">
-            <div class="progress-percent" id="progressPercent">0%</div>
-            <div class="progress-count" id="progressCount">0 / 0</div>
-          </div>
-        </div>
-        <div class="progress-bar-wrap" id="progressBarWrap">
-          <div
-            class="progress-bar-fill"
-            id="progressFill"
-            style="width: 0%"
-          ></div>
-        </div>
-        <div class="main-tabs">
-          <button
-            class="main-tab-btn active"
-            id="tabJadwal"
-            onclick="switchTab('jadwal')"
-          >
-            📅 الجدول
-          </button>
-          <button
-            class="main-tab-btn"
-            id="tabRoutine"
-            onclick="switchTab('routine')"
-          >
-            🌅 الروتين
-          </button>
-        </div>
+    @media (max-width: 600px) {
+      .site-title { font-size: 20px; }
+      .progress-percent { font-size: 22px; }
+      .task-name { font-size: 13px; }
+      .routine-item { gap: 8px; padding: 10px 14px; }
+      .routine-section-header { padding: 12px 14px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <div class="site-title">جدول المراجعة</div>
+        <div class="site-subtitle">20 أبريل – 31 مايو 2026</div>
       </div>
-    </header>
-
-    <nav class="week-nav" id="weekNavBar">
-      <div class="week-nav-inner" id="weekNav"></div>
-    </nav>
-
-    <main>
-      <!-- JADWAL PAGE -->
-      <div
-        class="page active"
-        id="pageJadwal"
-        style="max-width: 860px; margin: 0 auto; padding: 24px 20px 60px"
-      >
-        <div id="mainContent"></div>
+      <div class="progress-stat" id="progressWrap">
+        <div class="progress-percent" id="progressPercent">0%</div>
+        <div class="progress-count" id="progressCount">0 / 0</div>
       </div>
+    </div>
+    <div class="progress-bar-wrap" id="progressBarWrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="main-tabs">
+      <button class="main-tab-btn active" id="tabJadwal" onclick="switchTab('jadwal')">📅 الجدول</button>
+      <button class="main-tab-btn" id="tabRoutine" onclick="switchTab('routine')">🌅 الروتين</button>
+    </div>
+  </div>
+</header>
 
-      <!-- ROUTINE PAGE -->
-      <div
-        class="page"
-        id="pageRoutine"
-        style="max-width: 860px; margin: 0 auto; padding: 24px 20px 60px"
-      >
-        <div class="routine-page">
-          <!-- بعد الاستيقاظ -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-morning">
-              🌅 بعد الاستيقاظ
-            </div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">6:30 – 7:00</span>
-                <span class="routine-text">🕌 صلاة الفجر + أذكار</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">7:00 – 7:20</span>
-                <span class="routine-text">📖 قرآن (صفحتين بتدبّر)</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">7:20 – 8:00</span>
-                <span class="routine-text">فطور وهدوء بدون موبايل</span>
-              </div>
-            </div>
+<nav class="week-nav" id="weekNavBar">
+  <div class="week-nav-inner" id="weekNav"></div>
+</nav>
+
+<main>
+  <!-- JADWAL PAGE -->
+  <div class="page active" id="pageJadwal" style="max-width:860px;margin:0 auto;padding:24px 20px 60px;">
+    <div id="mainContent"></div>
+  </div>
+
+  <!-- ROUTINE PAGE -->
+  <div class="page" id="pageRoutine" style="max-width:860px;margin:0 auto;padding:24px 20px 60px;">
+    <div class="routine-page">
+
+      <!-- النوم -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-night">🛌 النوم</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">10:45 م</span>
+            <span class="routine-text">نوم</span>
           </div>
-
-          <!-- أول تركيز دراسة -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-study1">
-              📘 أول تركيز دراسة
-            </div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">8:00 – 9:30</span>
-                <span class="routine-text"
-                  >🧪 محاضرة كيمياء (مشاهدة بتركيز)</span
-                >
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">9:30 – 10:00</span>
-                <span class="routine-text">🧠 حفظ أهم النقاط</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">10:00 – 10:30</span>
-                <span class="routine-text"
-                  >♟ شطرنج على Chess.com أو مكعب روبيك</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- الظهر -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-duhr">🕌 الظهر</div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">12:30 – 1:00</span>
-                <span class="routine-text">صلاة الظهر + استراحة قصيرة</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">1:00 – 2:00</span>
-                <span class="routine-text"
-                  >🎮 تلفون / بلاي بدون تأنيب ضمير</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- ثاني تركيز دراسة -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-study2">
-              📗 ثاني تركيز دراسة
-            </div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">2:00 – 3:15</span>
-                <span class="routine-text">📚 المحاضرة الثانية (أي مادة)</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">3:15 – 3:45</span>
-                <span class="routine-text">مراجعة + تثبيت</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- العصر + نشاط -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-asr">🕌 العصر + نشاط</div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">4:20 – 4:35</span>
-                <span class="routine-text">صلاة العصر</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">4:35 – 5:05</span>
-                <span class="routine-text">تمرين خفيف مناسب للإصابة</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">5:05 – 5:30</span>
-                <span class="routine-text">سباحة / شاور</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- المغرب -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-maghrib">🌇 المغرب</div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">المغرب</span>
-                <span class="routine-text">صلاة + أذكار</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">30 دقيقة</span>
-                <span class="routine-text"
-                  >🎨 هواية ممتعة: رسم سريع، أو تصوير بالموبايل، أو تعلّم عزف من
-                  JustinGuitar</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- الليل الهادئ -->
-          <div class="routine-section">
-            <div class="routine-section-header rs-night">
-              🌙 العشاء والليل الهادئ
-            </div>
-            <div class="routine-items">
-              <div class="routine-item">
-                <span class="routine-time">العشاء</span>
-                <span class="routine-text">صلاة</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">20 دقيقة</span>
-                <span class="routine-text">📖 قرآن خفيف</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">30 دقيقة</span>
-                <span class="routine-text">🎧 حلقة من فنجان</span>
-              </div>
-              <div class="routine-item">
-                <span class="routine-time">قبل النوم</span>
-                <span class="routine-text">اكتب 3 أشياء أنجزتها اليوم</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- ليش ممتع -->
-          <div class="routine-why">
-            <div class="routine-why-title">✨ ليش هذا الروتين ممتع؟</div>
-            <div class="routine-why-item">
-              <div class="routine-why-dot"></div>
-              <span>دراسة على فترتين فقط (ماكو ضغط)</span>
-            </div>
-            <div class="routine-why-item">
-              <div class="routine-why-dot"></div>
-              <span>هوايات داخل اليوم مو بس دراسة</span>
-            </div>
-            <div class="routine-why-item">
-              <div class="routine-why-dot"></div>
-              <span>وقت لعب وترفيه محسوب</span>
-            </div>
-            <div class="routine-why-item">
-              <div class="routine-why-dot"></div>
-              <span>قرآن وصلاة موزعة تريح النفس</span>
-            </div>
-            <div class="routine-why-item">
-              <div class="routine-why-dot"></div>
-              <span>حركة جسم بدون ما تأذي</span>
-            </div>
+          <div class="routine-item">
+            <span class="routine-time">6:30 ص</span>
+            <span class="routine-text">استيقاظ</span>
           </div>
         </div>
       </div>
-    </main>
 
-    <footer>جدول المراجعة الدراسية – 2026</footer>
+      <!-- الصباح -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-morning">🌅 الصباح</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">6:30 – 6:40</span>
+            <span class="routine-text">🕌 صلاة الفجر</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">6:40 – 7:00</span>
+            <span class="routine-text">📖 قرآن</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">7:00 – 7:30</span>
+            <span class="routine-text">فطور وراحة</span>
+          </div>
+        </div>
+      </div>
 
-    <script>
-      const STORAGE_KEY = "study-tracker-v3";
+      <!-- الدراسة الأولى -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-study1">📚 الدراسة الأولى</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">7:30 – 9:00</span>
+            <span class="routine-text">محاضرة 1 (فهم + تركيز)</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">9:00 – 9:30</span>
+            <span class="routine-text">مراجعة + تلخيص سريع</span>
+          </div>
+        </div>
+      </div>
 
-      const TASKS = [
-        // الأسبوع 1
-        {
-          date: "2026-04-12",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 1,
-          subjects: ["أحياء 1"],
-        },
-        {
-          date: "2026-04-13",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 2,
-          subjects: ["كيمياء 1", "نصف إسلامية (سورة 1)"],
-        },
-        {
-          date: "2026-04-14",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 3,
-          subjects: ["فيزياء 1", "نصف كيمياء 2"],
-        },
-        {
-          date: "2026-04-15",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 4,
-          subjects: ["أحياء 2", "نصف عربي 2"],
-        },
-        {
-          date: "2026-04-16",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 5,
-          subjects: ["كيمياء 3", "نصف حديث 1"],
-        },
-        {
-          date: "2026-04-17",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 6,
-          subjects: ["فيزياء 2", "نصف أحياء 3"],
-        },
-        {
-          date: "2026-04-18",
-          week: 1,
-          weekLabel: "الأسبوع 1",
-          day: 7,
-          subjects: ["كيمياء 4", "نصف عربي 3"],
-        },
+      <!-- استراحة ممتعة -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-break">🎮 استراحة ممتعة</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">9:30 – 10:15</span>
+            <span class="routine-text">♟ شطرنج Chess.com &nbsp;أو&nbsp; مكعب روبيك / تلفون</span>
+          </div>
+        </div>
+      </div>
 
-        // الأسبوع 2
-        {
-          date: "2026-04-19",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 8,
-          subjects: ["أحياء 4", "نصف معاني"],
-        },
-        {
-          date: "2026-04-20",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 9,
-          subjects: ["فيزياء 3", "نصف كيمياء 5"],
-        },
-        {
-          date: "2026-04-21",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 10,
-          subjects: ["أحياء 5", "نصف عربي 4"],
-        },
-        {
-          date: "2026-04-22",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 11,
-          subjects: ["كيمياء 6", "نصف سورة 2"],
-        },
-        {
-          date: "2026-04-23",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 12,
-          subjects: ["فيزياء 4", "نصف أحياء 6"],
-        },
-        {
-          date: "2026-04-24",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 13,
-          subjects: ["كيمياء 7", "نصف عربي 5"],
-        },
-        {
-          date: "2026-04-25",
-          week: 2,
-          weekLabel: "الأسبوع 2",
-          day: 14,
-          subjects: ["أحياء 7", "نصف حديث 2"],
-        },
+      <!-- الظهر -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-duhr">🕌 الظهر</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">12:30 – 12:45</span>
+            <span class="routine-text">صلاة الظهر</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">12:45 – 1:15</span>
+            <span class="routine-text">راحة / غداء</span>
+          </div>
+        </div>
+      </div>
 
-        // الأسبوع 3
-        {
-          date: "2026-04-26",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 15,
-          subjects: ["فيزياء 5", "نصف كيمياء 8"],
-        },
-        {
-          date: "2026-04-27",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 16,
-          subjects: ["أحياء 8", "نصف عربي 6"],
-        },
-        {
-          date: "2026-04-28",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 17,
-          subjects: ["كيمياء 9", "نصف معاني"],
-        },
-        {
-          date: "2026-04-29",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 18,
-          subjects: ["فيزياء 6", "نصف أحياء 9"],
-        },
-        {
-          date: "2026-04-30",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 19,
-          subjects: ["كيمياء 10", "نصف عربي 7"],
-        },
-        {
-          date: "2026-05-01",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 20,
-          subjects: ["أحياء 10", "نصف سورة 3"],
-        },
-        {
-          date: "2026-05-02",
-          week: 3,
-          weekLabel: "الأسبوع 3",
-          day: 21,
-          subjects: ["فيزياء 7", "نصف كيمياء 11"],
-        },
+      <!-- الدراسة الثانية -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-study2">📗 الدراسة الثانية</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">1:15 – 2:45</span>
+            <span class="routine-text">محاضرة 2</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">2:45 – 3:15</span>
+            <span class="routine-text">مراجعة وتثبيت</span>
+          </div>
+        </div>
+      </div>
 
-        // الأسبوع 4
-        {
-          date: "2026-05-03",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 22,
-          subjects: ["أحياء 11", "نصف عربي 8"],
-        },
-        {
-          date: "2026-05-04",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 23,
-          subjects: ["كيمياء 12", "نصف حديث 3"],
-        },
-        {
-          date: "2026-05-05",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 24,
-          subjects: ["فيزياء 8", "نصف أحياء 12"],
-        },
-        {
-          date: "2026-05-06",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 25,
-          subjects: ["كيمياء 13", "نصف عربي 9"],
-        },
-        {
-          date: "2026-05-07",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 26,
-          subjects: ["أحياء 13", "نصف معاني"],
-        },
-        {
-          date: "2026-05-08",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 27,
-          subjects: ["فيزياء 9", "نصف كيمياء 14"],
-        },
-        {
-          date: "2026-05-09",
-          week: 4,
-          weekLabel: "الأسبوع 4",
-          day: 28,
-          subjects: ["أحياء 14", "مراجعة عربي خفيفة"],
-        },
+      <!-- العصر + نشاط -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-asr">🕌 العصر + نشاط</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">4:20 – 4:35</span>
+            <span class="routine-text">صلاة العصر</span>
+          </div>
+        </div>
+      </div>
 
-        // الأسبوع 5
-        {
-          date: "2026-05-10",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 29,
-          subjects: ["كيمياء 15", "نصف سورة 4"],
-        },
-        {
-          date: "2026-05-11",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 30,
-          subjects: ["فيزياء 10", "نصف أحياء 15"],
-        },
-        {
-          date: "2026-05-12",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 31,
-          subjects: ["كيمياء 16", "نصف حديث 4"],
-        },
-        {
-          date: "2026-05-13",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 32,
-          subjects: ["أحياء 16", "مراجعة عربي"],
-        },
-        {
-          date: "2026-05-14",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 33,
-          subjects: ["فيزياء 11", "نصف كيمياء 17"],
-        },
-        {
-          date: "2026-05-15",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 34,
-          subjects: ["أحياء 17", "نصف معاني"],
-        },
-        {
-          date: "2026-05-16",
-          week: 5,
-          weekLabel: "الأسبوع 5",
-          day: 35,
-          subjects: ["كيمياء 18", "مراجعة عربي"],
-        },
+      <!-- حسب الأيام -->
+      <div class="routine-section">
+        <div class="routine-section-header" style="background:linear-gradient(135deg,#475569,#334155);">🏋️‍♂️ حسب الأيام</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time" style="background:#dcfce7;color:#166534;">🟢 اثنين/ثلاثاء/خميس/سبت</span>
+            <span class="routine-text">4:35 – 5:15 تمارين كاملة 🏃‍♂️&nbsp;&nbsp;|&nbsp;&nbsp;5:15 – 5:40 سباحة / شاور 🚿</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time" style="background:#fef9c3;color:#854d0e;">🟡 الأربعاء</span>
+            <span class="routine-text">4:35 – 4:45 تمطيط فقط 🧘 (راحة خفيفة)</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time" style="background:#fee2e2;color:#991b1b;">🔴 جمعة / أحد</span>
+            <span class="routine-text">4:35 – 5:30 راحة / تلفون / مشي خفيف</span>
+          </div>
+        </div>
+      </div>
 
-        // الأسبوع 6
-        {
-          date: "2026-05-17",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 36,
-          subjects: ["فيزياء 12", "نصف أحياء 18"],
-        },
-        {
-          date: "2026-05-18",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 37,
-          subjects: ["كيمياء 19", "نصف سورة 5"],
-        },
-        {
-          date: "2026-05-19",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 38,
-          subjects: ["أحياء 19", "مراجعة"],
-        },
-        {
-          date: "2026-05-20",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 39,
-          subjects: ["فيزياء 13", "نصف كيمياء 20"],
-        },
-        {
-          date: "2026-05-21",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 40,
-          subjects: ["أحياء 20", "نصف حديث 5"],
-        },
-        {
-          date: "2026-05-22",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 41,
-          subjects: ["فيزياء 14", "نصف أحياء 21"],
-        },
-        {
-          date: "2026-05-23",
-          week: 6,
-          weekLabel: "الأسبوع 6",
-          day: 42,
-          subjects: ["فيزياء 15", "نصف أحياء 22"],
-        },
+      <!-- المغرب -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-maghrib">🌇 المغرب</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">المغرب</span>
+            <span class="routine-text">صلاة + أذكار</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">30 دقيقة</span>
+            <span class="routine-text">🎨 هواية: رسم ✏️ &nbsp;|&nbsp; تصوير 📸 &nbsp;|&nbsp; تعلم عزف من JustinGuitar 🎸</span>
+          </div>
+        </div>
+      </div>
 
-        // الأسبوع 7 (مراجعة)
-        {
-          date: "2026-05-24",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 43,
-          subjects: ["فيزياء 16", "نصف أحياء 23"],
-        },
-        {
-          date: "2026-05-25",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 44,
-          subjects: ["فيزياء 17", "نصف أحياء 24"],
-        },
-        {
-          date: "2026-05-26",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 45,
-          subjects: ["أحياء 25", "مراجعة كيمياء"],
-        },
-        {
-          date: "2026-05-27",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 46,
-          subjects: ["مراجعة فيزياء", "مراجعة أحياء"],
-        },
-        {
-          date: "2026-05-28",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 47,
-          subjects: ["مراجعة كيمياء", "مراجعة إسلامية"],
-        },
-        {
-          date: "2026-05-29",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 48,
-          subjects: ["مراجعة عربي", "مراجعة أحياء"],
-        },
-        {
-          date: "2026-05-30",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 49,
-          subjects: ["مراجعة شاملة (كيمياء + فيزياء)"],
-        },
-        {
-          date: "2026-05-31",
-          week: 7,
-          weekLabel: "الأسبوع 7 (مراجعة)",
-          day: 50,
-          subjects: ["مراجعة نهائية خفيفة لكل المواد"],
-        },
-      ];
+      <!-- الليل -->
+      <div class="routine-section">
+        <div class="routine-section-header rs-night">🌙 الليل</div>
+        <div class="routine-items">
+          <div class="routine-item">
+            <span class="routine-time">8:00 – 8:30</span>
+            <span class="routine-text">عشاء + صلاة العشاء</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">8:30 – 9:00</span>
+            <span class="routine-text">📖 قرآن خفيف</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">9:00 – 9:40</span>
+            <span class="routine-text">🎧 بودكاست فنجان أو تلفون</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">9:40 – 10:30</span>
+            <span class="routine-text">🎮 بلاي / استرخاء</span>
+          </div>
+          <div class="routine-item">
+            <span class="routine-time">10:30 – 10:45</span>
+            <span class="routine-text">تهدئة + تجهيز للنوم</span>
+          </div>
+        </div>
+      </div>
 
-      function getSubjectClass(s) {
-        if (s.includes("كيمياء")) return "color-chemistry";
-        if (s.includes("فيزياء")) return "color-physics";
-        if (s.includes("أحياء")) return "color-biology";
-        if (s.includes("عربي")) return "color-arabic";
-        if (
-          s.includes("إسلامية") ||
-          s.includes("حديث") ||
-          s.includes("معاني") ||
-          s.includes("سورة")
-        )
-          return "color-islamic";
-        if (s.includes("مراجعة")) return "color-review";
-        return "color-review";
-      }
+      <!-- النتيجة -->
+      <div class="routine-why">
+        <div class="routine-why-title">🎯 النتيجة</div>
+        <div class="routine-why-item"><div class="routine-why-dot"></div><span>2 محاضرات يوميًا</span></div>
+        <div class="routine-why-item"><div class="routine-why-dot"></div><span>تمارين 4 أيام بالأسبوع</span></div>
+        <div class="routine-why-item"><div class="routine-why-dot"></div><span>راحة موزونة</span></div>
+        <div class="routine-why-item"><div class="routine-why-dot"></div><span>لعب + هوايات يوميًا</span></div>
+        <div class="routine-why-item"><div class="routine-why-dot"></div><span>نوم ثابت = تركيز قوي</span></div>
+      </div>
 
-      function getSubjectTag(s) {
-        if (s.includes("كيمياء")) return "كيمياء";
-        if (s.includes("فيزياء")) return "فيزياء";
-        if (s.includes("أحياء")) return "أحياء";
-        if (s.includes("عربي")) return "عربي";
-        if (
-          s.includes("إسلامية") ||
-          s.includes("حديث") ||
-          s.includes("معاني") ||
-          s.includes("سورة")
-        )
-          return "إسلامية";
-        if (s.includes("مراجعة")) return "مراجعة";
-        return "مراجعة";
-      }
+    </div>
+  </div>
+</main>
 
-      function todayStr() {
-        const d = new Date();
-        const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, "0");
-        const day = String(d.getDate()).padStart(2, "0");
-        return `${y}-${m}-${day}`;
-      }
+<footer>جدول المراجعة الدراسية – 2026</footer>
 
-      function isPast(dateStr) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        return new Date(dateStr + "T00:00:00") < today;
-      }
+<script>
+  const STORAGE_KEY = "study-tracker-v4";
 
-      function formatDate(dateStr) {
-        const dayNames = [
-          "الأحد",
-          "الاثنين",
-          "الثلاثاء",
-          "الأربعاء",
-          "الخميس",
-          "الجمعة",
-          "السبت",
-        ];
-        const d = new Date(dateStr + "T00:00:00");
-        const [y, m, day] = dateStr.split("-");
-        return `${dayNames[d.getDay()]} - ${day}/${m}/${y}`;
-      }
+  const TASKS = [
+    // الأسبوع 1 (20/4 – 26/4)
+    { date:"2026-04-20", week:1, weekLabel:"الأسبوع 1", day:1,  subjects:["أحياء: وراثة 1","كيمياء: ف5 مح1","مسائي: فيزياء 1"] },
+    { date:"2026-04-21", week:1, weekLabel:"الأسبوع 1", day:2,  subjects:["أحياء: وراثة 2","كيمياء: ف5 مح2","مسائي: رياضيات 1"] },
+    { date:"2026-04-22", week:1, weekLabel:"الأسبوع 1", day:3,  subjects:["أحياء: وراثة 3","كيمياء: ف5 مح3","مسائي: فيزياء 2"] },
+    { date:"2026-04-23", week:1, weekLabel:"الأسبوع 1", day:4,  subjects:["أحياء: وراثة 4","كيمياء: ف5 مح4","مسائي: رياضيات 2"] },
+    { date:"2026-04-24", week:1, weekLabel:"الأسبوع 1", day:5,  subjects:["أحياء: وراثة 5","كيمياء: ف5 مح5","مسائي: فيزياء 3"] },
+    { date:"2026-04-25", week:1, weekLabel:"الأسبوع 1", day:6,  subjects:["أحياء: وراثة 6","كيمياء: ف5 مح6","مسائي: رياضيات 3"] },
+    { date:"2026-04-26", week:1, weekLabel:"الأسبوع 1", day:7,  subjects:["أحياء: مراجعة","كيمياء: مراجعة","مسائي: عربي"] },
 
-      const CHECK_ICON = `<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
+    // الأسبوع 2 (27/4 – 3/5)
+    { date:"2026-04-27", week:2, weekLabel:"الأسبوع 2", day:8,  subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح7","مسائي: فيزياء 4"] },
+    { date:"2026-04-28", week:2, weekLabel:"الأسبوع 2", day:9,  subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح8","مسائي: رياضيات 4"] },
+    { date:"2026-04-29", week:2, weekLabel:"الأسبوع 2", day:10, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح9","مسائي: فيزياء 5"] },
+    { date:"2026-04-30", week:2, weekLabel:"الأسبوع 2", day:11, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح10","مسائي: رياضيات 5"] },
+    { date:"2026-05-01", week:2, weekLabel:"الأسبوع 2", day:12, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح11","مسائي: فيزياء 6"] },
+    { date:"2026-05-02", week:2, weekLabel:"الأسبوع 2", day:13, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح12","مسائي: رياضيات 6"] },
+    { date:"2026-05-03", week:2, weekLabel:"الأسبوع 2", day:14, subjects:["أحياء: مراجعة","كيمياء: مراجعة","مسائي: عربي"] },
 
-      let completed = {};
-      try {
-        completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-      } catch (e) {}
-      let activeWeek = null;
-      let currentTab = "jadwal";
+    // الأسبوع 3 (4/5 – 10/5)
+    { date:"2026-05-04", week:3, weekLabel:"الأسبوع 3", day:15, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح13","مسائي: فيزياء 7"] },
+    { date:"2026-05-05", week:3, weekLabel:"الأسبوع 3", day:16, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح14","مسائي: رياضيات 7"] },
+    { date:"2026-05-06", week:3, weekLabel:"الأسبوع 3", day:17, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح15","مسائي: فيزياء 8"] },
+    { date:"2026-05-07", week:3, weekLabel:"الأسبوع 3", day:18, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح16","مسائي: رياضيات 8"] },
+    { date:"2026-05-08", week:3, weekLabel:"الأسبوع 3", day:19, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح17","مسائي: فيزياء 9"] },
+    { date:"2026-05-09", week:3, weekLabel:"الأسبوع 3", day:20, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح18","مسائي: رياضيات 9"] },
+    { date:"2026-05-10", week:3, weekLabel:"الأسبوع 3", day:21, subjects:["أحياء: مراجعة","كيمياء: مراجعة","مسائي: عربي"] },
 
-      function save() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
-      }
+    // الأسبوع 4 (11/5 – 17/5)
+    { date:"2026-05-11", week:4, weekLabel:"الأسبوع 4", day:22, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح19","مسائي: فيزياء 10"] },
+    { date:"2026-05-12", week:4, weekLabel:"الأسبوع 4", day:23, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح20","مسائي: رياضيات 10"] },
+    { date:"2026-05-13", week:4, weekLabel:"الأسبوع 4", day:24, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح21","مسائي: فيزياء 11"] },
+    { date:"2026-05-14", week:4, weekLabel:"الأسبوع 4", day:25, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح22","مسائي: رياضيات 11"] },
+    { date:"2026-05-15", week:4, weekLabel:"الأسبوع 4", day:26, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح23","مسائي: فيزياء 12"] },
+    { date:"2026-05-16", week:4, weekLabel:"الأسبوع 4", day:27, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح24","مسائي: رياضيات 12"] },
+    { date:"2026-05-17", week:4, weekLabel:"الأسبوع 4", day:28, subjects:["أحياء: مراجعة","كيمياء: مراجعة","مسائي: عربي"] },
 
-      function getCompleted(date, idx) {
-        return !!(completed[date] && completed[date][idx]);
-      }
+    // الأسبوع 5 (18/5 – 24/5)
+    { date:"2026-05-18", week:5, weekLabel:"الأسبوع 5", day:29, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح25","مسائي: فيزياء 13"] },
+    { date:"2026-05-19", week:5, weekLabel:"الأسبوع 5", day:30, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح26","مسائي: رياضيات 13"] },
+    { date:"2026-05-20", week:5, weekLabel:"الأسبوع 5", day:31, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح27","مسائي: فيزياء 14"] },
+    { date:"2026-05-21", week:5, weekLabel:"الأسبوع 5", day:32, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح28","مسائي: رياضيات 14"] },
+    { date:"2026-05-22", week:5, weekLabel:"الأسبوع 5", day:33, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح29","مسائي: فيزياء 15"] },
+    { date:"2026-05-23", week:5, weekLabel:"الأسبوع 5", day:34, subjects:["أحياء: مراجعة وراثة","كيمياء: ف5 مح30","مسائي: رياضيات 15"] },
+    { date:"2026-05-24", week:5, weekLabel:"الأسبوع 5", day:35, subjects:["أحياء: مراجعة","كيمياء: مراجعة","مسائي: عربي"] },
 
-      function markDone(date, idx, total) {
-        if (!completed[date]) completed[date] = new Array(total).fill(false);
-        completed[date][idx] = !completed[date][idx];
-        save();
+    // الأسبوع 6 – مراجعة (25/5 – 31/5)
+    { date:"2026-05-25", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:36, subjects:["أحياء: مراجعة شاملة","كيمياء: مراجعة","مسائي: فيزياء مراجعة"] },
+    { date:"2026-05-26", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:37, subjects:["أحياء: مراجعة شاملة","كيمياء: مراجعة","مسائي: رياضيات مراجعة"] },
+    { date:"2026-05-27", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:38, subjects:["أحياء: حل أسئلة","كيمياء: حل أسئلة","مسائي: عربي"] },
+    { date:"2026-05-28", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:39, subjects:["أحياء: حل أسئلة","كيمياء: حل أسئلة","مسائي: فيزياء"] },
+    { date:"2026-05-29", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:40, subjects:["أحياء: مراجعة مركزة","كيمياء: مراجعة مركزة","مسائي: رياضيات"] },
+    { date:"2026-05-30", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:41, subjects:["أحياء: اختبار ذاتي","كيمياء: اختبار ذاتي","مسائي: عربي"] },
+    { date:"2026-05-31", week:6, weekLabel:"الأسبوع 6 (مراجعة)", day:42, subjects:["أحياء: مراجعة نهائية","كيمياء: مراجعة نهائية","مسائي: راحة 🎉"] },
+  ];
+
+  function getSubjectClass(s) {
+    if (s.includes("كيمياء")) return "color-chemistry";
+    if (s.includes("فيزياء")) return "color-physics";
+    if (s.includes("أحياء"))  return "color-biology";
+    if (s.includes("رياضيات")) return "color-math";
+    if (s.includes("عربي"))   return "color-arabic";
+    if (s.includes("إسلامية") || s.includes("حديث") || s.includes("معاني") || s.includes("سورة")) return "color-islamic";
+    if (s.includes("مراجعة") || s.includes("راحة")) return "color-review";
+    return "color-review";
+  }
+
+  function getSubjectTag(s) {
+    if (s.includes("كيمياء")) return "كيمياء";
+    if (s.includes("فيزياء")) return "فيزياء";
+    if (s.includes("أحياء"))  return "أحياء";
+    if (s.includes("رياضيات")) return "رياضيات";
+    if (s.includes("عربي"))   return "عربي";
+    if (s.includes("إسلامية") || s.includes("حديث") || s.includes("معاني") || s.includes("سورة")) return "إسلامية";
+    if (s.includes("مراجعة") || s.includes("راحة")) return "مراجعة";
+    return "مراجعة";
+  }
+
+  function todayStr() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,"0");
+    const day = String(d.getDate()).padStart(2,"0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function isPast(dateStr) {
+    const today = new Date(); today.setHours(0,0,0,0);
+    return new Date(dateStr+"T00:00:00") < today;
+  }
+
+  function formatDate(dateStr) {
+    const dayNames = ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+    const d = new Date(dateStr+"T00:00:00");
+    const [y,m,day] = dateStr.split("-");
+    return `${dayNames[d.getDay()]} - ${day}/${m}/${y}`;
+  }
+
+  const CHECK_ICON = `<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
+
+  let completed = {};
+  try { completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e) {}
+  let activeWeek = null;
+  let currentTab = "jadwal";
+
+  function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(completed)); }
+
+  function getCompleted(date, idx) {
+    return !!(completed[date] && completed[date][idx]);
+  }
+
+  function markDone(date, idx, total) {
+    if (!completed[date]) completed[date] = new Array(total).fill(false);
+    completed[date][idx] = !completed[date][idx];
+    save();
+    render();
+  }
+
+  function totalStats() {
+    let total = 0, done = 0;
+    TASKS.forEach(t => {
+      total += t.subjects.length;
+      t.subjects.forEach((_,i) => { if (getCompleted(t.date, i)) done++; });
+    });
+    return { total, done };
+  }
+
+  function weekStats(weekNum) {
+    const wt = TASKS.filter(t => t.week === weekNum);
+    let total = 0, done = 0;
+    wt.forEach(t => {
+      total += t.subjects.length;
+      t.subjects.forEach((_,i) => { if (getCompleted(t.date, i)) done++; });
+    });
+    return { total, done };
+  }
+
+  function switchTab(tab) {
+    currentTab = tab;
+    document.getElementById("tabJadwal").classList.toggle("active", tab === "jadwal");
+    document.getElementById("tabRoutine").classList.toggle("active", tab === "routine");
+    document.getElementById("pageJadwal").classList.toggle("active", tab === "jadwal");
+    document.getElementById("pageRoutine").classList.toggle("active", tab === "routine");
+    document.getElementById("weekNavBar").style.display = tab === "jadwal" ? "" : "none";
+    document.getElementById("progressWrap").style.display = tab === "jadwal" ? "" : "none";
+    document.getElementById("progressBarWrap").style.display = tab === "jadwal" ? "" : "none";
+  }
+
+  function renderWeekNav() {
+    const weeks = [...new Set(TASKS.map(t => t.week))];
+    const nav = document.getElementById("weekNav");
+    nav.innerHTML = "";
+    weeks.forEach(w => {
+      const { total, done } = weekStats(w);
+      const allDone = done === total;
+      const isActive = activeWeek === w;
+      const weekLabel = TASKS.find(t => t.week === w).weekLabel;
+      const shortLabel = `${w}`;
+      const btn = document.createElement("button");
+      btn.className = "week-btn" + (isActive ? " active" : "") + (allDone && !isActive ? " all-done" : "");
+      btn.textContent = shortLabel + (allDone ? " ✓" : "");
+      btn.title = weekLabel;
+      btn.onclick = () => {
+        activeWeek = (activeWeek === w) ? null : w;
         render();
-      }
+      };
+      nav.appendChild(btn);
+    });
+  }
 
-      function totalStats() {
-        let total = 0,
-          done = 0;
-        TASKS.forEach((t) => {
-          total += t.subjects.length;
-          t.subjects.forEach((_, i) => {
-            if (getCompleted(t.date, i)) done++;
-          });
-        });
-        return { total, done };
-      }
+  function renderMain() {
+    const today = todayStr();
+    const main = document.getElementById("mainContent");
+    main.innerHTML = "";
 
-      function weekStats(weekNum) {
-        const wt = TASKS.filter((t) => t.week === weekNum);
-        let total = 0,
-          done = 0;
-        wt.forEach((t) => {
-          total += t.subjects.length;
-          t.subjects.forEach((_, i) => {
-            if (getCompleted(t.date, i)) done++;
-          });
-        });
-        return { total, done };
-      }
+    const weeks = [...new Set(TASKS.map(t => t.week))];
+    const visibleWeeks = activeWeek === null ? weeks : [activeWeek];
 
-      function switchTab(tab) {
-        currentTab = tab;
-        document
-          .getElementById("tabJadwal")
-          .classList.toggle("active", tab === "jadwal");
-        document
-          .getElementById("tabRoutine")
-          .classList.toggle("active", tab === "routine");
-        document
-          .getElementById("pageJadwal")
-          .classList.toggle("active", tab === "jadwal");
-        document
-          .getElementById("pageRoutine")
-          .classList.toggle("active", tab === "routine");
-        document.getElementById("weekNavBar").style.display =
-          tab === "jadwal" ? "" : "none";
-        document.getElementById("progressWrap").style.display =
-          tab === "jadwal" ? "" : "none";
-        document.getElementById("progressBarWrap").style.display =
-          tab === "jadwal" ? "" : "none";
-      }
+    visibleWeeks.forEach(weekNum => {
+      const wTasks = TASKS.filter(t => t.week === weekNum);
+      const { total, done } = weekStats(weekNum);
+      const weekLabel = wTasks[0].weekLabel;
 
-      function renderWeekNav() {
-        const weeks = [...new Set(TASKS.map((t) => t.week))];
-        const nav = document.getElementById("weekNav");
-        nav.innerHTML = "";
-        weeks.forEach((w) => {
-          const { total, done } = weekStats(w);
-          const allDone = done === total;
-          const isActive = activeWeek === w;
-          const weekLabel = TASKS.find((t) => t.week === w).weekLabel;
-          const shortLabel = `${w}`;
-          const btn = document.createElement("button");
-          btn.className =
-            "week-btn" +
-            (isActive ? " active" : "") +
-            (allDone && !isActive ? " all-done" : "");
-          btn.textContent = shortLabel + (allDone ? " ✓" : "");
-          btn.title = weekLabel;
-          btn.onclick = () => {
-            activeWeek = activeWeek === w ? null : w;
-            render();
-          };
-          nav.appendChild(btn);
-        });
-      }
+      const section = document.createElement("section");
+      section.className = "week-section";
 
-      function renderMain() {
-        const today = todayStr();
-        const main = document.getElementById("mainContent");
-        main.innerHTML = "";
-
-        const weeks = [...new Set(TASKS.map((t) => t.week))];
-        const visibleWeeks = activeWeek === null ? weeks : [activeWeek];
-
-        visibleWeeks.forEach((weekNum) => {
-          const wTasks = TASKS.filter((t) => t.week === weekNum);
-          const { total, done } = weekStats(weekNum);
-          const weekLabel = wTasks[0].weekLabel;
-
-          const section = document.createElement("section");
-          section.className = "week-section";
-
-          const wHeader = document.createElement("div");
-          wHeader.className = "week-header";
-          wHeader.innerHTML = `
+      const wHeader = document.createElement("div");
+      wHeader.className = "week-header";
+      wHeader.innerHTML = `
         <div class="week-title">${weekLabel}</div>
         <div class="week-count">${done}/${total}</div>
       `;
-          section.appendChild(wHeader);
+      section.appendChild(wHeader);
 
-          wTasks.forEach((task) => {
-            const isToday = task.date === today;
-            const past = isPast(task.date);
-            const allDone = task.subjects.every((_, i) =>
-              getCompleted(task.date, i),
-            );
+      wTasks.forEach(task => {
+        const isToday = task.date === today;
+        const past = isPast(task.date);
+        const allDone = task.subjects.every((_,i) => getCompleted(task.date, i));
 
-            let cardClass = "day-card";
-            if (isToday) cardClass += " is-today";
-            else if (allDone) cardClass += " is-done";
-            else if (past) cardClass += " is-past";
+        let cardClass = "day-card";
+        if (isToday) cardClass += " is-today";
+        else if (allDone) cardClass += " is-done";
+        else if (past) cardClass += " is-past";
 
-            const card = document.createElement("div");
-            card.className = cardClass;
-            card.id = `day-${task.date}`;
+        const card = document.createElement("div");
+        card.className = cardClass;
+        card.id = `day-${task.date}`;
 
-            const tasksHTML = task.subjects
-              .map((subj, i) => {
-                const done = getCompleted(task.date, i);
-                const cls = getSubjectClass(subj);
-                const tag = getSubjectTag(subj);
-                return `
+        const tasksHTML = task.subjects.map((subj, i) => {
+          const done = getCompleted(task.date, i);
+          const cls = getSubjectClass(subj);
+          const tag = getSubjectTag(subj);
+          return `
             <div class="task-row ${cls} ${done ? "task-done" : ""}">
               <div class="task-left">
                 <div class="task-stripe"></div>
@@ -1406,18 +790,15 @@
               </div>
               <button class="complete-btn ${done ? "is-done" : "not-done"}"
                 onclick="markDone('${task.date}', ${i}, ${task.subjects.length})">
-                ${
-                  done
-                    ? `<span class="done-text">${CHECK_ICON} تم</span><span class="undo-text">↩ إلغاء</span>`
-                    : "تم الإكمال"
-                }
+                ${done
+                  ? `<span class="done-text">${CHECK_ICON} تم</span><span class="undo-text">↩ إلغاء</span>`
+                  : "تم الإكمال"}
               </button>
             </div>
           `;
-              })
-              .join("");
+        }).join("");
 
-            card.innerHTML = `
+        card.innerHTML = `
           <div class="day-inner">
             <div class="day-header">
               <div class="day-header-left">
@@ -1433,41 +814,40 @@
           </div>
         `;
 
-            section.appendChild(card);
-          });
+        section.appendChild(card);
+      });
 
-          main.appendChild(section);
-        });
-      }
+      main.appendChild(section);
+    });
+  }
 
-      function renderProgress() {
-        const { total, done } = totalStats();
-        const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-        document.getElementById("progressPercent").textContent = pct + "%";
-        document.getElementById("progressCount").textContent =
-          `${done} / ${total}`;
-        document.getElementById("progressFill").style.width = pct + "%";
-      }
+  function renderProgress() {
+    const { total, done } = totalStats();
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    document.getElementById("progressPercent").textContent = pct + "%";
+    document.getElementById("progressCount").textContent = `${done} / ${total}`;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
 
-      function render() {
-        renderProgress();
-        renderWeekNav();
-        renderMain();
-      }
+  function render() {
+    renderProgress();
+    renderWeekNav();
+    renderMain();
+  }
 
-      (function init() {
-        const today = todayStr();
-        const todayTask = TASKS.find((t) => t.date === today);
-        if (todayTask) activeWeek = todayTask.week;
-        else activeWeek = 1;
-        render();
-        if (todayTask) {
-          setTimeout(() => {
-            const el = document.getElementById(`day-${todayTask.date}`);
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 200);
-        }
-      })();
-    </script>
-  </body>
+  (function init() {
+    const today = todayStr();
+    const todayTask = TASKS.find(t => t.date === today);
+    if (todayTask) activeWeek = todayTask.week;
+    else activeWeek = 1;
+    render();
+    if (todayTask) {
+      setTimeout(() => {
+        const el = document.getElementById(`day-${todayTask.date}`);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 200);
+    }
+  })();
+</script>
+</body>
 </html>
