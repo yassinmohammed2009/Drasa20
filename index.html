@@ -15,11 +15,8 @@
       direction: rtl;
     }
 
-    /* HEADER */
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid #e2e8f0;
@@ -28,18 +25,13 @@
     }
     .header-inner { max-width: 860px; margin: 0 auto; }
     .header-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 12px;
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 12px;
     }
     .site-title {
-      font-size: 24px;
-      font-weight: 800;
+      font-size: 24px; font-weight: 800;
       background: linear-gradient(135deg, #6366f1, #4f46e5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .site-subtitle { font-size: 13px; color: #64748b; margin-top: 2px; }
     .progress-stat { text-align: left; }
@@ -47,143 +39,87 @@
     .progress-count { font-size: 12px; color: #94a3b8; margin-top: 1px; }
     .progress-bar-wrap {
       width: 100%; height: 10px;
-      background: #e2e8f0; border-radius: 99px; overflow: hidden;
-      margin-bottom: 0;
+      background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-bottom: 0;
     }
     .progress-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, #6366f1, #818cf8);
-      border-radius: 99px;
-      transition: width 0.7s ease;
+      border-radius: 99px; transition: width 0.7s ease;
     }
 
-    /* MAIN TABS */
     .main-tabs {
-      display: flex;
-      gap: 0;
-      margin-top: 14px;
-      border-top: 1px solid #e2e8f0;
+      display: flex; gap: 0; margin-top: 14px; border-top: 1px solid #e2e8f0;
     }
     .main-tab-btn {
-      flex: 1;
-      padding: 12px 0;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      background: transparent;
-      color: #94a3b8;
-      border-bottom: 3px solid transparent;
-      transition: all 0.2s;
+      flex: 1; padding: 12px 0; font-size: 14px; font-weight: 700;
+      border: none; cursor: pointer; background: transparent; color: #94a3b8;
+      border-bottom: 3px solid transparent; transition: all 0.2s;
     }
-    .main-tab-btn.active {
-      color: #6366f1;
-      border-bottom-color: #6366f1;
-    }
+    .main-tab-btn.active { color: #6366f1; border-bottom-color: #6366f1; }
     .main-tab-btn:hover:not(.active) { color: #475569; }
 
-    /* WEEK NAV */
     .week-nav {
-      position: sticky;
-      top: 128px;
-      z-index: 40;
+      position: sticky; top: 128px; z-index: 40;
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e2e8f0;
-      padding: 10px 20px;
+      border-bottom: 1px solid #e2e8f0; padding: 10px 20px;
     }
     .week-nav-inner {
       max-width: 860px; margin: 0 auto;
-      display: flex; gap: 8px;
-      overflow-x: auto; scrollbar-width: none;
+      display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
     }
     .week-nav-inner::-webkit-scrollbar { display: none; }
     .week-btn {
-      flex-shrink: 0;
-      padding: 6px 16px;
-      border-radius: 99px;
-      font-size: 14px; font-weight: 600;
-      border: none; cursor: pointer;
-      transition: all 0.2s;
-      background: #f1f5f9; color: #475569;
+      flex-shrink: 0; padding: 6px 16px; border-radius: 99px;
+      font-size: 14px; font-weight: 600; border: none; cursor: pointer;
+      transition: all 0.2s; background: #f1f5f9; color: #475569;
     }
     .week-btn:hover { background: #e2e8f0; }
-    .week-btn.active {
-      background: #6366f1; color: white;
-      box-shadow: 0 4px 12px rgba(99,102,241,0.3);
-    }
-    .week-btn.all-done {
-      background: #d1fae5; color: #065f46;
-      border: 1px solid #a7f3d0;
-    }
+    .week-btn.active { background: #6366f1; color: white; box-shadow: 0 4px 12px rgba(99,102,241,0.3); }
+    .week-btn.all-done { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
     .week-btn.all-done.active { background: #6366f1; color: white; border: none; }
 
-    /* MAIN */
     main { max-width: 860px; margin: 0 auto; padding: 24px 20px 60px; }
 
-    /* PAGE SECTIONS */
     .page { display: none; }
     .page.active { display: block; }
 
     .week-section { margin-bottom: 36px; }
-    .week-header {
-      display: flex; align-items: center;
-      justify-content: space-between; margin-bottom: 12px;
-    }
+    .week-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .week-title { font-size: 18px; font-weight: 700; color: #1e293b; }
-    .week-count {
-      font-size: 13px; color: #64748b;
-      background: #f1f5f9; padding: 3px 12px; border-radius: 99px;
-    }
+    .week-count { font-size: 13px; color: #64748b; background: #f1f5f9; padding: 3px 12px; border-radius: 99px; }
 
-    /* DAY CARD */
     .day-card {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      margin-bottom: 12px;
-      transition: all 0.3s;
+      background: white; border: 1px solid #e2e8f0; border-radius: 16px;
+      margin-bottom: 12px; transition: all 0.3s;
     }
-    .day-card.is-today {
-      border-color: #a5b4fc;
-      background: #f5f3ff;
-      box-shadow: 0 0 0 2px #c7d2fe, 0 4px 16px rgba(99,102,241,0.12);
-    }
+    .day-card.is-today { border-color: #a5b4fc; background: #f5f3ff; box-shadow: 0 0 0 2px #c7d2fe, 0 4px 16px rgba(99,102,241,0.12); }
     .day-card.is-done { border-color: #a7f3d0; background: #f0fdf4; }
     .day-card.is-past:not(.is-done):not(.is-today) { background: #fafafa; border-color: #e5e7eb; }
 
     .day-inner { padding: 16px; }
-    .day-header {
-      display: flex; align-items: center;
-      justify-content: space-between; margin-bottom: 14px;
-    }
+    .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .day-header-left { display: flex; align-items: center; gap: 10px; }
     .day-num {
       width: 36px; height: 36px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 14px; font-weight: 700; color: white;
-      background: linear-gradient(135deg, #6366f1, #4f46e5);
-      flex-shrink: 0;
+      background: linear-gradient(135deg, #6366f1, #4f46e5); flex-shrink: 0;
     }
     .day-card.is-done .day-num { background: linear-gradient(135deg, #10b981, #059669); }
     .day-date { font-size: 14px; font-weight: 600; color: #1e293b; }
     .today-badge { font-size: 12px; color: #6366f1; font-weight: 600; }
     .done-badge {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 12px; font-weight: 600;
-      color: #059669; background: #d1fae5;
-      padding: 4px 10px; border-radius: 99px;
+      display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600;
+      color: #059669; background: #d1fae5; padding: 4px 10px; border-radius: 99px;
     }
     .done-badge svg { width: 13px; height: 13px; }
 
-    /* TASKS */
     .tasks-list { display: flex; flex-direction: column; gap: 8px; }
     .task-row {
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px; border-radius: 12px;
-      border: 1px solid #f1f5f9; background: white;
-      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 14px; border-radius: 12px; border: 1px solid #f1f5f9;
+      background: white; transition: all 0.2s;
     }
     .task-row:hover:not(.task-done) { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .task-row.task-done { background: #f8fafc; border-color: #f1f5f9; }
@@ -191,13 +127,9 @@
     .task-stripe { width: 4px; height: 32px; border-radius: 99px; flex-shrink: 0; }
     .task-name { font-size: 14px; font-weight: 500; color: #334155; }
     .task-done .task-name { text-decoration: line-through; color: #94a3b8; }
-    .subject-tag {
-      font-size: 10px; padding: 2px 8px;
-      border-radius: 6px; border: 1px solid; font-weight: 500;
-    }
+    .subject-tag { font-size: 10px; padding: 2px 8px; border-radius: 6px; border: 1px solid; font-weight: 500; }
     .task-done .subject-tag { opacity: 0.4; }
 
-    /* Subject colors */
     .color-chemistry .task-stripe { background: linear-gradient(180deg, #10b981, #059669); }
     .color-chemistry .subject-tag { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
     .color-physics .task-stripe { background: linear-gradient(180deg, #3b82f6, #2563eb); }
@@ -206,36 +138,19 @@
     .color-biology .subject-tag { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
     .color-arabic .task-stripe { background: linear-gradient(180deg, #f59e0b, #d97706); }
     .color-arabic .subject-tag { background: #fef3c7; color: #92400e; border-color: #fde68a; }
-    .color-islamic .task-stripe { background: linear-gradient(180deg, #14b8a6, #0d9488); }
-    .color-islamic .subject-tag { background: #ccfbf1; color: #134e4a; border-color: #99f6e4; }
     .color-review .task-stripe { background: linear-gradient(180deg, #f43f5e, #e11d48); }
     .color-review .subject-tag { background: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
-    .color-math .task-stripe { background: linear-gradient(180deg, #f97316, #ea580c); }
-    .color-math .subject-tag { background: #ffedd5; color: #9a3412; border-color: #fed7aa; }
-    .color-exercise .task-stripe { background: linear-gradient(180deg, #06b6d4, #0891b2); }
-    .color-exercise .subject-tag { background: #cffafe; color: #164e63; border-color: #a5f3fc; }
 
-    /* COMPLETE BUTTON */
     .complete-btn {
       flex-shrink: 0; padding: 7px 14px; border-radius: 10px;
       font-size: 12px; font-weight: 600; border: none; cursor: pointer;
-      transition: all 0.2s;
-      display: flex; align-items: center; gap: 5px;
+      transition: all 0.2s; display: flex; align-items: center; gap: 5px;
     }
-    .complete-btn.not-done {
-      background: #6366f1; color: white;
-      box-shadow: 0 2px 6px rgba(99,102,241,0.3);
-    }
+    .complete-btn.not-done { background: #6366f1; color: white; box-shadow: 0 2px 6px rgba(99,102,241,0.3); }
     .complete-btn.not-done:hover { background: #4f46e5; transform: scale(1.03); }
     .complete-btn.not-done:active { transform: scale(0.97); }
-    .complete-btn.is-done {
-      background: #d1fae5; color: #059669;
-      border: 1px solid #a7f3d0;
-    }
-    .complete-btn.is-done:hover {
-      background: #fee2e2; color: #dc2626;
-      border-color: #fca5a5;
-    }
+    .complete-btn.is-done { background: #d1fae5; color: #059669; border: 1px solid #a7f3d0; }
+    .complete-btn.is-done:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
     .complete-btn.is-done:hover .done-text { display: none; }
     .complete-btn.is-done:hover .undo-text { display: flex; }
     .complete-btn.is-done .undo-text { display: none; }
@@ -243,26 +158,14 @@
     .complete-btn svg { width: 13px; height: 13px; }
 
     /* ===== ROUTINE PAGE ===== */
-    .routine-page { padding-top: 4px; }
-
     .routine-section {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      overflow: hidden;
+      background: white; border: 1px solid #e2e8f0; border-radius: 20px;
+      margin-bottom: 16px; overflow: hidden;
     }
-
     .routine-section-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 700;
-      color: white;
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px; font-size: 15px; font-weight: 700; color: white;
     }
-
     .rs-morning { background: linear-gradient(135deg, #f59e0b, #d97706); }
     .rs-study1  { background: linear-gradient(135deg, #6366f1, #4f46e5); }
     .rs-break   { background: linear-gradient(135deg, #ec4899, #db2777); }
@@ -271,75 +174,137 @@
     .rs-asr     { background: linear-gradient(135deg, #10b981, #059669); }
     .rs-maghrib { background: linear-gradient(135deg, #f43f5e, #e11d48); }
     .rs-night   { background: linear-gradient(135deg, #1e293b, #334155); }
-
     .routine-items { padding: 6px 0; }
-
     .routine-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 18px;
-      border-bottom: 1px solid #f1f5f9;
-      transition: background 0.15s;
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 18px; border-bottom: 1px solid #f1f5f9; transition: background 0.15s;
     }
     .routine-item:last-child { border-bottom: none; }
     .routine-item:hover { background: #fafafa; }
-
     .routine-time {
-      font-size: 12px;
-      font-weight: 700;
-      color: #6366f1;
-      background: #ede9fe;
-      padding: 3px 8px;
-      border-radius: 8px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 1px;
+      font-size: 12px; font-weight: 700; color: #6366f1; background: #ede9fe;
+      padding: 3px 8px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 1px;
     }
-    .routine-time.no-time {
-      background: transparent;
-      color: transparent;
-      width: 0; padding: 0;
-    }
-
-    .routine-text {
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.5;
-      flex: 1;
-    }
-    .routine-emoji { font-size: 16px; margin-left: 4px; }
-
+    .routine-text { font-size: 14px; color: #334155; line-height: 1.5; flex: 1; }
     .routine-why {
-      background: linear-gradient(135deg, #f0f4ff, #ede9fe);
-      border: 1px solid #c7d2fe;
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin-top: 8px;
-      margin-bottom: 24px;
+      background: linear-gradient(135deg, #f0f4ff, #ede9fe); border: 1px solid #c7d2fe;
+      border-radius: 16px; padding: 18px 20px; margin-top: 8px; margin-bottom: 24px;
     }
-    .routine-why-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #4f46e5;
-      margin-bottom: 12px;
-    }
+    .routine-why-title { font-size: 15px; font-weight: 700; color: #4f46e5; margin-bottom: 12px; }
     .routine-why-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 13px;
-      color: #475569;
-      line-height: 1.5;
+      display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;
+      font-size: 13px; color: #475569; line-height: 1.5;
     }
-    .routine-why-dot {
-      width: 6px; height: 6px;
-      background: #6366f1;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 6px;
+    .routine-why-dot { width: 6px; height: 6px; background: #6366f1; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
+    /* ===== WORKOUT PAGE ===== */
+    .workout-page { padding-top: 4px; }
+
+    .workout-info-card {
+      background: white; border: 1px solid #e2e8f0; border-radius: 20px;
+      overflow: hidden; margin-bottom: 20px;
     }
+    .workout-info-header {
+      padding: 14px 20px; font-size: 16px; font-weight: 800; color: white;
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+    }
+    .workout-info-body { padding: 16px 20px; }
+
+    .warmup-title {
+      font-size: 15px; font-weight: 700; color: #0891b2; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .warmup-list { list-style: none; margin-bottom: 18px; }
+    .warmup-list li {
+      padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #334155;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .warmup-list li:last-child { border-bottom: none; }
+    .warmup-dot { width: 7px; height: 7px; background: #06b6d4; border-radius: 50%; flex-shrink: 0; }
+
+    .main-ex-title {
+      font-size: 15px; font-weight: 700; color: #0891b2; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .ex-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .ex-table th {
+      background: #f0f9ff; color: #0369a1; font-weight: 700;
+      padding: 8px 12px; text-align: right; border-bottom: 2px solid #bae6fd;
+    }
+    .ex-table td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+    .ex-table tr:last-child td { border-bottom: none; }
+    .ex-table tr:hover td { background: #f0f9ff; }
+    .muscle-badge {
+      display: inline-block; font-size: 10px; padding: 2px 7px;
+      border-radius: 6px; font-weight: 600; background: #cffafe; color: #164e63; border: 1px solid #a5f3fc;
+    }
+
+    .weekly-schedule-card {
+      background: white; border: 1px solid #e2e8f0; border-radius: 20px;
+      overflow: hidden; margin-bottom: 20px;
+    }
+    .weekly-schedule-header {
+      padding: 14px 20px; font-size: 15px; font-weight: 800; color: white;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+    .schedule-days { padding: 8px 0; }
+    .schedule-day {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 20px; border-bottom: 1px solid #f1f5f9;
+    }
+    .schedule-day:last-child { border-bottom: none; }
+    .day-label { width: 80px; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+    .day-label.workout { color: #0891b2; }
+    .day-label.rest { color: #94a3b8; }
+    .day-desc { font-size: 13px; color: #475569; flex: 1; }
+    .day-badge-workout {
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+      background: #cffafe; color: #0e7490; border: 1px solid #a5f3fc; flex-shrink: 0;
+    }
+    .day-badge-rest {
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+      background: #f1f5f9; color: #94a3b8; flex-shrink: 0;
+    }
+
+    .workout-log-card {
+      background: white; border: 1px solid #e2e8f0; border-radius: 20px;
+      overflow: hidden; margin-bottom: 20px;
+    }
+    .workout-log-header {
+      padding: 14px 20px; font-size: 15px; font-weight: 800; color: white;
+      background: linear-gradient(135deg, #10b981, #059669);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .workout-log-stat { font-size: 13px; font-weight: 600; opacity: 0.9; }
+    .workout-log-body { padding: 8px 0; }
+    .workout-entry {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 20px; border-bottom: 1px solid #f1f5f9; transition: background 0.15s;
+    }
+    .workout-entry:last-child { border-bottom: none; }
+    .workout-entry-left { display: flex; align-items: center; gap: 10px; }
+    .workout-entry-date { font-size: 13px; font-weight: 600; color: #334155; }
+    .workout-entry-type {
+      font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px;
+      background: #cffafe; color: #164e63; border: 1px solid #a5f3fc;
+    }
+    .workout-entry-type.light { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+    .workout-btn {
+      flex-shrink: 0; padding: 6px 14px; border-radius: 10px;
+      font-size: 12px; font-weight: 600; border: none; cursor: pointer;
+      transition: all 0.2s; display: flex; align-items: center; gap: 5px;
+    }
+    .workout-btn.not-done { background: #06b6d4; color: white; box-shadow: 0 2px 6px rgba(6,182,212,0.3); }
+    .workout-btn.not-done:hover { background: #0891b2; transform: scale(1.03); }
+    .workout-btn.is-done { background: #d1fae5; color: #059669; border: 1px solid #a7f3d0; }
+    .workout-btn.is-done:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+    .workout-btn.is-done:hover .done-text { display: none; }
+    .workout-btn.is-done:hover .undo-text { display: flex; }
+    .workout-btn.is-done .undo-text { display: none; }
+    .workout-btn.is-done .done-text { display: flex; align-items: center; gap: 4px; }
+    .workout-btn svg { width: 13px; height: 13px; }
+    .workout-entry.done-entry { background: #f0fdf4; }
+    .workout-entry.done-entry .workout-entry-date { text-decoration: line-through; color: #94a3b8; }
 
     footer { text-align: center; padding: 24px; font-size: 12px; color: #94a3b8; }
 
@@ -347,8 +312,8 @@
       .site-title { font-size: 20px; }
       .progress-percent { font-size: 22px; }
       .task-name { font-size: 13px; }
-      .routine-item { gap: 8px; padding: 10px 14px; }
-      .routine-section-header { padding: 12px 14px; font-size: 14px; }
+      .main-tab-btn { font-size: 12px; }
+      .ex-table th, .ex-table td { padding: 7px 8px; font-size: 12px; }
     }
   </style>
 </head>
@@ -359,7 +324,7 @@
     <div class="header-top">
       <div>
         <div class="site-title">جدول المراجعة</div>
-        <div class="site-subtitle">26 أبريل – 26 يونيو 2026</div>
+        <div class="site-subtitle">28 أبريل – 31 مايو 2026</div>
       </div>
       <div class="progress-stat" id="progressWrap">
         <div class="progress-percent" id="progressPercent">0%</div>
@@ -371,6 +336,7 @@
     </div>
     <div class="main-tabs">
       <button class="main-tab-btn active" id="tabJadwal" onclick="switchTab('jadwal')">📅 الجدول</button>
+      <button class="main-tab-btn" id="tabWorkout" onclick="switchTab('workout')">🏋️ التمارين</button>
       <button class="main-tab-btn" id="tabRoutine" onclick="switchTab('routine')">🌅 الروتين</button>
     </div>
   </div>
@@ -386,173 +352,174 @@
     <div id="mainContent"></div>
   </div>
 
+  <!-- WORKOUT PAGE -->
+  <div class="page" id="pageWorkout" style="max-width:860px;margin:0 auto;padding:24px 20px 60px;">
+    <div class="workout-page">
+
+      <div class="weekly-schedule-card">
+        <div class="weekly-schedule-header">📅 الجدول الأسبوعي</div>
+        <div class="schedule-days">
+          <div class="schedule-day">
+            <span class="day-label workout">السبت</span>
+            <span class="day-desc">جسم كامل + باي</span>
+            <span class="day-badge-workout">30 دقيقة</span>
+          </div>
+          <div class="schedule-day">
+            <span class="day-label rest">الأحد</span>
+            <span class="day-desc" style="color:#94a3b8;">راحة</span>
+            <span class="day-badge-rest">—</span>
+          </div>
+          <div class="schedule-day">
+            <span class="day-label workout">الاثنين</span>
+            <span class="day-desc">جسم كامل + باي</span>
+            <span class="day-badge-workout">30 دقيقة</span>
+          </div>
+          <div class="schedule-day">
+            <span class="day-label rest">الثلاثاء</span>
+            <span class="day-desc" style="color:#94a3b8;">راحة</span>
+            <span class="day-badge-rest">—</span>
+          </div>
+          <div class="schedule-day">
+            <span class="day-label workout">الأربعاء</span>
+            <span class="day-desc">جسم كامل + باي</span>
+            <span class="day-badge-workout">30 دقيقة</span>
+          </div>
+          <div class="schedule-day">
+            <span class="day-label rest">الخميس</span>
+            <span class="day-desc" style="color:#94a3b8;">راحة</span>
+            <span class="day-badge-rest">—</span>
+          </div>
+          <div class="schedule-day">
+            <span class="day-label workout">الجمعة</span>
+            <span class="day-desc">جسم كامل + باي خفيف</span>
+            <span class="day-badge-workout" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0;">20 دقيقة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-info-card">
+        <div class="workout-info-header">🔥 الإحماء (5 دقايق)</div>
+        <div class="workout-info-body">
+          <ul class="warmup-list">
+            <li><span class="warmup-dot"></span>سكوات 10</li>
+            <li><span class="warmup-dot"></span>لف كتاف</li>
+            <li><span class="warmup-dot"></span>نط وهمي دقيقة</li>
+            <li><span class="warmup-dot"></span>تمطيط يدين ورجلين</li>
+          </ul>
+          <div class="main-ex-title">💪 التمرين الرئيسي (3 جولات)</div>
+          <table class="ex-table">
+            <thead>
+              <tr><th>التمرين</th><th>التكرار</th><th>العضلة</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>سكوات</td><td>15</td><td><span class="muscle-badge">رجلين</span></td></tr>
+              <tr><td>ضغط صدر (Push-ups)</td><td>8–10</td><td><span class="muscle-badge">صدر / تراي</span></td></tr>
+              <tr><td>بلانك</td><td>25 ثانية</td><td><span class="muscle-badge">بطن</span></td></tr>
+              <tr><td>لانجز</td><td>10 لكل رجل</td><td><span class="muscle-badge">رجلين</span></td></tr>
+              <tr><td>باي بقناني مي (Biceps Curls)</td><td>15</td><td><span class="muscle-badge">باي</span></td></tr>
+              <tr><td>باي مطرقة (Hammer Curls)</td><td>12</td><td><span class="muscle-badge">باي</span></td></tr>
+              <tr><td>سوبرمان</td><td>12</td><td><span class="muscle-badge">ظهر</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="workout-log-card">
+        <div class="workout-log-header">
+          <span>✅ سجل التمارين</span>
+          <span class="workout-log-stat" id="workoutLogStat">0 / 0</span>
+        </div>
+        <div class="workout-log-body" id="workoutLogBody"></div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ROUTINE PAGE -->
   <div class="page" id="pageRoutine" style="max-width:860px;margin:0 auto;padding:24px 20px 60px;">
-    <div class="routine-page">
-
-      <!-- النوم -->
+    <div>
       <div class="routine-section">
         <div class="routine-section-header rs-night">🛌 النوم</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">10:45 م</span>
-            <span class="routine-text">نوم</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">6:30 ص</span>
-            <span class="routine-text">استيقاظ</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">10:45 م</span><span class="routine-text">نوم</span></div>
+          <div class="routine-item"><span class="routine-time">6:30 ص</span><span class="routine-text">استيقاظ</span></div>
         </div>
       </div>
-
-      <!-- الصباح -->
       <div class="routine-section">
         <div class="routine-section-header rs-morning">🌅 الصباح</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">6:30 – 6:40</span>
-            <span class="routine-text">🕌 صلاة الفجر</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">6:40 – 7:00</span>
-            <span class="routine-text">📖 قرآن</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">7:00 – 7:30</span>
-            <span class="routine-text">فطور وراحة</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">6:30 – 6:40</span><span class="routine-text">🕌 صلاة الفجر</span></div>
+          <div class="routine-item"><span class="routine-time">6:40 – 7:00</span><span class="routine-text">📖 قرآن</span></div>
+          <div class="routine-item"><span class="routine-time">7:00 – 7:30</span><span class="routine-text">فطور وراحة</span></div>
         </div>
       </div>
-
-      <!-- الدراسة الأولى -->
       <div class="routine-section">
         <div class="routine-section-header rs-study1">📚 الدراسة الأولى</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">7:30 – 9:00</span>
-            <span class="routine-text">محاضرة 1 (فهم + تركيز)</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">9:00 – 9:30</span>
-            <span class="routine-text">مراجعة + تلخيص سريع</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">7:30 – 9:00</span><span class="routine-text">محاضرة 1 (فهم + تركيز)</span></div>
+          <div class="routine-item"><span class="routine-time">9:00 – 9:30</span><span class="routine-text">مراجعة + تلخيص سريع</span></div>
         </div>
       </div>
-
-      <!-- استراحة ممتعة -->
       <div class="routine-section">
         <div class="routine-section-header rs-break">🎮 استراحة ممتعة</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">9:30 – 10:15</span>
-            <span class="routine-text">♟ شطرنج Chess.com &nbsp;أو&nbsp; مكعب روبيك / تلفون</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">9:30 – 10:15</span><span class="routine-text">♟ شطرنج Chess.com &nbsp;أو&nbsp; مكعب روبيك / تلفون</span></div>
         </div>
       </div>
-
-      <!-- الظهر -->
       <div class="routine-section">
         <div class="routine-section-header rs-duhr">🕌 الظهر</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">12:30 – 12:45</span>
-            <span class="routine-text">صلاة الظهر</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">12:45 – 1:15</span>
-            <span class="routine-text">راحة / غداء</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">12:30 – 12:45</span><span class="routine-text">صلاة الظهر</span></div>
+          <div class="routine-item"><span class="routine-time">12:45 – 1:15</span><span class="routine-text">راحة / غداء</span></div>
         </div>
       </div>
-
-      <!-- الدراسة الثانية -->
       <div class="routine-section">
         <div class="routine-section-header rs-study2">📗 الدراسة الثانية</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">1:15 – 2:45</span>
-            <span class="routine-text">محاضرة 2</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">2:45 – 3:15</span>
-            <span class="routine-text">مراجعة وتثبيت</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">1:15 – 2:45</span><span class="routine-text">محاضرة 2</span></div>
+          <div class="routine-item"><span class="routine-time">2:45 – 3:15</span><span class="routine-text">مراجعة وتثبيت</span></div>
         </div>
       </div>
-
-      <!-- العصر + نشاط -->
       <div class="routine-section">
         <div class="routine-section-header rs-asr">🕌 العصر + نشاط</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">4:20 – 4:35</span>
-            <span class="routine-text">صلاة العصر</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">4:20 – 4:35</span><span class="routine-text">صلاة العصر</span></div>
         </div>
       </div>
-
-      <!-- حسب الأيام -->
       <div class="routine-section">
         <div class="routine-section-header" style="background:linear-gradient(135deg,#475569,#334155);">🏋️‍♂️ حسب الأيام</div>
         <div class="routine-items">
           <div class="routine-item">
-            <span class="routine-time" style="background:#dcfce7;color:#166534;">🟢 اثنين/ثلاثاء/خميس/سبت</span>
-            <span class="routine-text">4:35 – 5:15 تمارين كاملة 🏃‍♂️&nbsp;&nbsp;|&nbsp;&nbsp;5:15 – 5:40 سباحة / شاور 🚿</span>
+            <span class="routine-time" style="background:#cffafe;color:#0e7490;">🔵 سبت/اثنين/أربعاء</span>
+            <span class="routine-text">4:35 – 5:05 تمرين جسم كامل + باي (30 دق)</span>
           </div>
           <div class="routine-item">
-            <span class="routine-time" style="background:#fef9c3;color:#854d0e;">🟡 الأربعاء</span>
-            <span class="routine-text">4:35 – 4:45 تمطيط فقط 🧘 (راحة خفيفة)</span>
+            <span class="routine-time" style="background:#f0fdf4;color:#166534;">🟢 جمعة</span>
+            <span class="routine-text">4:35 – 4:55 تمرين خفيف (20 دق)</span>
           </div>
           <div class="routine-item">
-            <span class="routine-time" style="background:#fee2e2;color:#991b1b;">🔴 جمعة / أحد</span>
+            <span class="routine-time" style="background:#fee2e2;color:#991b1b;">🔴 أحد/ثلاثاء/خميس</span>
             <span class="routine-text">4:35 – 5:30 راحة / تلفون / مشي خفيف</span>
           </div>
         </div>
       </div>
-
-      <!-- المغرب -->
       <div class="routine-section">
         <div class="routine-section-header rs-maghrib">🌇 المغرب</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">المغرب</span>
-            <span class="routine-text">صلاة + أذكار</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">30 دقيقة</span>
-            <span class="routine-text">🎨 هواية: رسم ✏️ &nbsp;|&nbsp; تصوير 📸 &nbsp;|&nbsp; تعلم عزف من JustinGuitar 🎸</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">المغرب</span><span class="routine-text">صلاة + أذكار</span></div>
+          <div class="routine-item"><span class="routine-time">30 دقيقة</span><span class="routine-text">🎨 هواية: رسم ✏️ &nbsp;|&nbsp; تصوير 📸 &nbsp;|&nbsp; تعلم عزف من JustinGuitar 🎸</span></div>
         </div>
       </div>
-
-      <!-- الليل -->
       <div class="routine-section">
         <div class="routine-section-header rs-night">🌙 الليل</div>
         <div class="routine-items">
-          <div class="routine-item">
-            <span class="routine-time">8:00 – 8:30</span>
-            <span class="routine-text">عشاء + صلاة العشاء</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">8:30 – 9:00</span>
-            <span class="routine-text">📖 قرآن خفيف</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">9:00 – 9:40</span>
-            <span class="routine-text">🎧 بودكاست فنجان أو تلفون</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">9:40 – 10:30</span>
-            <span class="routine-text">🎮 بلاي / استرخاء</span>
-          </div>
-          <div class="routine-item">
-            <span class="routine-time">10:30 – 10:45</span>
-            <span class="routine-text">تهدئة + تجهيز للنوم</span>
-          </div>
+          <div class="routine-item"><span class="routine-time">8:00 – 8:30</span><span class="routine-text">عشاء + صلاة العشاء</span></div>
+          <div class="routine-item"><span class="routine-time">8:30 – 9:00</span><span class="routine-text">📖 قرآن خفيف</span></div>
+          <div class="routine-item"><span class="routine-time">9:00 – 9:40</span><span class="routine-text">🎧 بودكاست فنجان أو تلفون</span></div>
+          <div class="routine-item"><span class="routine-time">9:40 – 10:30</span><span class="routine-text">🎮 بلاي / استرخاء</span></div>
+          <div class="routine-item"><span class="routine-time">10:30 – 10:45</span><span class="routine-text">تهدئة + تجهيز للنوم</span></div>
         </div>
       </div>
-
-      <!-- النتيجة -->
       <div class="routine-why">
         <div class="routine-why-title">🎯 النتيجة</div>
         <div class="routine-why-item"><div class="routine-why-dot"></div><span>2 محاضرات يوميًا</span></div>
@@ -561,7 +528,6 @@
         <div class="routine-why-item"><div class="routine-why-dot"></div><span>لعب + هوايات يوميًا</span></div>
         <div class="routine-why-item"><div class="routine-why-dot"></div><span>نوم ثابت = تركيز قوي</span></div>
       </div>
-
     </div>
   </div>
 </main>
@@ -570,108 +536,114 @@
 
 <script>
   const STORAGE_KEY = "study-tracker-v4";
+  const WORKOUT_KEY = "workout-tracker-v1";
 
   const TASKS = [
-    // الأسبوع 1 (26/4 → 2/5)
-    { date:"2026-04-26", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:1,  subjects:["كيمياء: ف7 مح1–2","أحياء: وراثة 1"] },
-    { date:"2026-04-27", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:2,  subjects:["فيزياء: 1–2","رياضيات: 1","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-04-28", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:3,  subjects:["أحياء: وراثة 2–3","عربي: مح1"] },
-    { date:"2026-04-29", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:4,  subjects:["كيمياء: ف7 مح3–4","فيزياء: 3","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-04-30", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:5,  subjects:["رياضيات: 2–3","أحياء: وراثة 4"] },
-    { date:"2026-05-01", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:6,  subjects:["كيمياء: ف7 مح5","عربي: مح2","فيزياء: 4","تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-05-02", week:1, weekLabel:"الأسبوع 1 (26/4 → 2/5)", day:7,  subjects:["مراجعة خفيفة","تمرين: جسم كامل + باي (30 دق)"] },
+    // الأسبوع 1 (28/4 → 4/5)
+    { date:"2026-04-28", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:1,  subjects:["كيمياء: ف7 مح1–2","أحياء: وراثة 1"] },
+    { date:"2026-04-29", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:2,  subjects:["فيزياء: 1–2","أحياء: وراثة 2"] },
+    { date:"2026-04-30", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:3,  subjects:["كيمياء: ف7 مح3–4","عربي: مح1"] },
+    { date:"2026-05-01", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:4,  subjects:["أحياء: وراثة 3–4","فيزياء: 3"] },
+    { date:"2026-05-02", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:5,  subjects:["كيمياء: ف7 مح5–6","أحياء: وراثة 5"] },
+    { date:"2026-05-03", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:6,  subjects:["فيزياء: 4–5","عربي: مح2"] },
+    { date:"2026-05-04", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:7,  subjects:["كيمياء: ف7 مح7–8","أحياء: وراثة 6"] },
 
-    // الأسبوع 2 (3/5 → 9/5)
-    { date:"2026-05-03", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:8,  subjects:["كيمياء: ف7 مح6–7","أحياء: وراثة 5"] },
-    { date:"2026-05-04", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:9,  subjects:["فيزياء: 5–6","رياضيات: 4","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-05", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:10, subjects:["أحياء: وراثة 6–7","عربي: مح3"] },
-    { date:"2026-05-06", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:11, subjects:["كيمياء: ف7 مح8–9","فيزياء: 7","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-07", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:12, subjects:["رياضيات: 5–6","أحياء: وراثة 8"] },
-    { date:"2026-05-08", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:13, subjects:["كيمياء: ف7 مح10","عربي: مح4","فيزياء: 8","تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-05-09", week:2, weekLabel:"الأسبوع 2 (3/5 → 9/5)", day:14, subjects:["مراجعة","تمرين: جسم كامل + باي (30 دق)"] },
+    // الأسبوع 2 (5/5 → 10/5)
+    { date:"2026-05-05", week:2, weekLabel:"الأسبوع 2 (5/5 → 10/5)", day:8,  subjects:["فيزياء: 6–7","أحياء: وراثة 7"] },
+    { date:"2026-05-06", week:2, weekLabel:"الأسبوع 2 (5/5 → 10/5)", day:9,  subjects:["كيمياء: ف7 مح9–10","عربي: مح3"] },
+    { date:"2026-05-07", week:2, weekLabel:"الأسبوع 2 (5/5 → 10/5)", day:10, subjects:["أحياء: وراثة 8–9","فيزياء: 8"] },
+    { date:"2026-05-08", week:2, weekLabel:"الأسبوع 2 (5/5 → 10/5)", day:11, subjects:["كيمياء: ف7 مح11–12","أحياء: وراثة 10"] },
+    { date:"2026-05-09", week:2, weekLabel:"الأسبوع 2 (5/5 → 10/5)", day:12, subjects:["فيزياء: 9–10","عربي: مح4"] },
+    { date:"2026-05-10", week:2, weekLabel:"الأسبوع 2 (5/5 → 10/5)", day:13, subjects:["كيمياء: ف7 مح13 (يخلص ف7)","أحياء: وراثة 11–12"] },
 
-    // الأسبوع 3 (10/5 → 16/5)
-    { date:"2026-05-10", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:15, subjects:["كيمياء: ف7 مح11–12","أحياء: وراثة 9"] },
-    { date:"2026-05-11", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:16, subjects:["فيزياء: 9–10","رياضيات: 7","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-12", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:17, subjects:["أحياء: وراثة 10–11","عربي: مح5"] },
-    { date:"2026-05-13", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:18, subjects:["كيمياء: ف7 مح13 (يخلص ف7)","فيزياء: 11","أحياء: وراثة 12","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-14", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:19, subjects:["رياضيات: 8–9","أحياء: وراثة 13"] },
-    { date:"2026-05-15", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:20, subjects:["كيمياء: ف6 مح1–2","عربي: مح6","تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-05-16", week:3, weekLabel:"الأسبوع 3 (10/5 → 16/5)", day:21, subjects:["مراجعة","تمرين: جسم كامل + باي (30 دق)"] },
+    // الأسبوع 3 (11/5 → 16/5)
+    { date:"2026-05-11", week:3, weekLabel:"الأسبوع 3 (11/5 → 16/5)", day:14, subjects:["فيزياء: 11–12","أحياء: وراثة 13"] },
+    { date:"2026-05-12", week:3, weekLabel:"الأسبوع 3 (11/5 → 16/5)", day:15, subjects:["كيمياء: ف6 مح1–2","عربي: مح5"] },
+    { date:"2026-05-13", week:3, weekLabel:"الأسبوع 3 (11/5 → 16/5)", day:16, subjects:["أحياء: وراثة 14–15","فيزياء: 13"] },
+    { date:"2026-05-14", week:3, weekLabel:"الأسبوع 3 (11/5 → 16/5)", day:17, subjects:["كيمياء: ف6 مح3–4","أحياء: وراثة 16"] },
+    { date:"2026-05-15", week:3, weekLabel:"الأسبوع 3 (11/5 → 16/5)", day:18, subjects:["فيزياء: 14–15","عربي: مح6"] },
+    { date:"2026-05-16", week:3, weekLabel:"الأسبوع 3 (11/5 → 16/5)", day:19, subjects:["كيمياء: ف6 مح5–6","أحياء: وراثة 17"] },
 
-    // الأسبوع 4 (17/5 → 23/5)
-    { date:"2026-05-17", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:22, subjects:["كيمياء: ف6 مح3–4","أحياء: وراثة 14"] },
-    { date:"2026-05-18", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:23, subjects:["فيزياء: 12–13","رياضيات: 10","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-19", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:24, subjects:["أحياء: وراثة 15–16","عربي: مح7"] },
-    { date:"2026-05-20", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:25, subjects:["كيمياء: ف6 مح5–6","فيزياء: 14","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-21", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:26, subjects:["رياضيات: 11–12","أحياء: وراثة 17"] },
-    { date:"2026-05-22", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:27, subjects:["كيمياء: ف6 مح7","عربي: مح8","فيزياء: 15","تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-05-23", week:4, weekLabel:"الأسبوع 4 (17/5 → 23/5)", day:28, subjects:["مراجعة","تمرين: جسم كامل + باي (30 دق)"] },
+    // الأسبوع 4 (17/5 → 22/5)
+    { date:"2026-05-17", week:4, weekLabel:"الأسبوع 4 (17/5 → 22/5)", day:20, subjects:["فيزياء: 16–17","أحياء: وراثة 18"] },
+    { date:"2026-05-18", week:4, weekLabel:"الأسبوع 4 (17/5 → 22/5)", day:21, subjects:["كيمياء: ف6 مح7–8","عربي: مح7"] },
+    { date:"2026-05-19", week:4, weekLabel:"الأسبوع 4 (17/5 → 22/5)", day:22, subjects:["أحياء: وراثة 19–20","فيزياء: 18"] },
+    { date:"2026-05-20", week:4, weekLabel:"الأسبوع 4 (17/5 → 22/5)", day:23, subjects:["كيمياء: ف6 مح9–10","أحياء: وراثة 21"] },
+    { date:"2026-05-21", week:4, weekLabel:"الأسبوع 4 (17/5 → 22/5)", day:24, subjects:["فيزياء: 19–20","عربي: مح8"] },
+    { date:"2026-05-22", week:4, weekLabel:"الأسبوع 4 (17/5 → 22/5)", day:25, subjects:["كيمياء: ف6 مح11–12","أحياء: وراثة 22"] },
 
-    // الأسبوع 5 (24/5 → 31/5)
-    { date:"2026-05-24", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:29, subjects:["كيمياء: ف6 مح8–9","أحياء: وراثة 18"] },
-    { date:"2026-05-25", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:30, subjects:["فيزياء: 16–17","رياضيات: 13","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-26", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:31, subjects:["أحياء: وراثة 19–20","عربي: مح9 (يخلص)"] },
-    { date:"2026-05-27", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:32, subjects:["كيمياء: ف6 مح10–11","فيزياء: 18","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-28", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:33, subjects:["رياضيات: 14–15","أحياء: وراثة 21"] },
-    { date:"2026-05-29", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:34, subjects:["كيمياء: ف6 مح12–13 (يخلص ف6)","فيزياء: 19","تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-05-30", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:35, subjects:["أحياء: وراثة 22–23","رياضيات: 16","تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-05-31", week:5, weekLabel:"الأسبوع 5 (24/5 → 31/5)", day:36, subjects:["فيزياء: 20–21","أحياء: وراثة 24"] },
+    // الأسبوع 5 (23/5 → 27/5)
+    { date:"2026-05-23", week:5, weekLabel:"الأسبوع 5 (23/5 → 27/5)", day:26, subjects:["فيزياء: 21–22","أحياء: وراثة 23"] },
+    { date:"2026-05-24", week:5, weekLabel:"الأسبوع 5 (23/5 → 27/5)", day:27, subjects:["كيمياء: ف6 مح13 (يخلص ف6)","عربي: مح9 (يخلص)"] },
+    { date:"2026-05-25", week:5, weekLabel:"الأسبوع 5 (23/5 → 27/5)", day:28, subjects:["أحياء: وراثة 24–25","فيزياء: 23"] },
+    { date:"2026-05-26", week:5, weekLabel:"الأسبوع 5 (23/5 → 27/5)", day:29, subjects:["كيمياء: ف5 مح1–2","أحياء: وراثة 26"] },
+    { date:"2026-05-27", week:5, weekLabel:"الأسبوع 5 (23/5 → 27/5)", day:30, subjects:["فيزياء: 24–25","أحياء: وراثة 27"] },
 
-    // الأسبوع 6 – تمارين فقط (1/6 → 7/6)
-    { date:"2026-06-01", week:6, weekLabel:"الأسبوع 6 (1/6 → 7/6)", day:37, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-03", week:6, weekLabel:"الأسبوع 6 (1/6 → 7/6)", day:38, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-05", week:6, weekLabel:"الأسبوع 6 (1/6 → 7/6)", day:39, subjects:["تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-06-06", week:6, weekLabel:"الأسبوع 6 (1/6 → 7/6)", day:40, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
+    // الأسبوع 6 (28/5 → 31/5)
+    { date:"2026-05-28", week:6, weekLabel:"الأسبوع 6 (28/5 → 31/5)", day:31, subjects:["كيمياء: ف5 مح3–4","أحياء: وراثة 28"] },
+    { date:"2026-05-29", week:6, weekLabel:"الأسبوع 6 (28/5 → 31/5)", day:32, subjects:["فيزياء: 26 (يخلص)","أحياء: وراثة 29–30"] },
+    { date:"2026-05-30", week:6, weekLabel:"الأسبوع 6 (28/5 → 31/5)", day:33, subjects:["كيمياء: ف5 مح5–6","أحياء: وراثة 31"] },
+    { date:"2026-05-31", week:6, weekLabel:"الأسبوع 6 (28/5 → 31/5)", day:34, subjects:["كيمياء: ف5 مح7–8","أحياء: وراثة 32"] },
+  ];
 
-    // الأسبوع 7 (8/6 → 14/6)
-    { date:"2026-06-08", week:7, weekLabel:"الأسبوع 7 (8/6 → 14/6)", day:41, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-10", week:7, weekLabel:"الأسبوع 7 (8/6 → 14/6)", day:42, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-12", week:7, weekLabel:"الأسبوع 7 (8/6 → 14/6)", day:43, subjects:["تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-06-13", week:7, weekLabel:"الأسبوع 7 (8/6 → 14/6)", day:44, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-
-    // الأسبوع 8 (15/6 → 21/6)
-    { date:"2026-06-15", week:8, weekLabel:"الأسبوع 8 (15/6 → 21/6)", day:45, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-17", week:8, weekLabel:"الأسبوع 8 (15/6 → 21/6)", day:46, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-19", week:8, weekLabel:"الأسبوع 8 (15/6 → 21/6)", day:47, subjects:["تمرين: جسم كامل + باي خفيف (20 دق)"] },
-    { date:"2026-06-20", week:8, weekLabel:"الأسبوع 8 (15/6 → 21/6)", day:48, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-
-    // الأسبوع 9 (22/6 → 26/6)
-    { date:"2026-06-22", week:9, weekLabel:"الأسبوع 9 (22/6 → 26/6)", day:49, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-24", week:9, weekLabel:"الأسبوع 9 (22/6 → 26/6)", day:50, subjects:["تمرين: جسم كامل + باي (30 دق)"] },
-    { date:"2026-06-26", week:9, weekLabel:"الأسبوع 9 (22/6 → 26/6)", day:51, subjects:["تمرين: جسم كامل + باي خفيف (20 دق)"] },
+  const WORKOUT_DAYS = [
+    { date:"2026-04-29", label:"الأربعاء 29/4", type:"full" },
+    { date:"2026-05-01", label:"الجمعة 1/5",    type:"light" },
+    { date:"2026-05-02", label:"السبت 2/5",      type:"full" },
+    { date:"2026-05-04", label:"الاثنين 4/5",    type:"full" },
+    { date:"2026-05-06", label:"الأربعاء 6/5",   type:"full" },
+    { date:"2026-05-08", label:"الجمعة 8/5",     type:"light" },
+    { date:"2026-05-09", label:"السبت 9/5",       type:"full" },
+    { date:"2026-05-11", label:"الاثنين 11/5",   type:"full" },
+    { date:"2026-05-13", label:"الأربعاء 13/5",  type:"full" },
+    { date:"2026-05-15", label:"الجمعة 15/5",    type:"light" },
+    { date:"2026-05-16", label:"السبت 16/5",      type:"full" },
+    { date:"2026-05-18", label:"الاثنين 18/5",   type:"full" },
+    { date:"2026-05-20", label:"الأربعاء 20/5",  type:"full" },
+    { date:"2026-05-22", label:"الجمعة 22/5",    type:"light" },
+    { date:"2026-05-23", label:"السبت 23/5",      type:"full" },
+    { date:"2026-05-25", label:"الاثنين 25/5",   type:"full" },
+    { date:"2026-05-27", label:"الأربعاء 27/5",  type:"full" },
+    { date:"2026-05-29", label:"الجمعة 29/5",    type:"light" },
+    { date:"2026-05-30", label:"السبت 30/5",      type:"full" },
+    { date:"2026-06-01", label:"الاثنين 1/6",    type:"full" },
+    { date:"2026-06-03", label:"الأربعاء 3/6",   type:"full" },
+    { date:"2026-06-05", label:"الجمعة 5/6",     type:"light" },
+    { date:"2026-06-06", label:"السبت 6/6",       type:"full" },
+    { date:"2026-06-08", label:"الاثنين 8/6",    type:"full" },
+    { date:"2026-06-10", label:"الأربعاء 10/6",  type:"full" },
+    { date:"2026-06-12", label:"الجمعة 12/6",    type:"light" },
+    { date:"2026-06-13", label:"السبت 13/6",      type:"full" },
+    { date:"2026-06-15", label:"الاثنين 15/6",   type:"full" },
+    { date:"2026-06-17", label:"الأربعاء 17/6",  type:"full" },
+    { date:"2026-06-19", label:"الجمعة 19/6",    type:"light" },
+    { date:"2026-06-20", label:"السبت 20/6",      type:"full" },
+    { date:"2026-06-22", label:"الاثنين 22/6",   type:"full" },
+    { date:"2026-06-24", label:"الأربعاء 24/6",  type:"full" },
+    { date:"2026-06-26", label:"الجمعة 26/6",    type:"light" },
   ];
 
   function getSubjectClass(s) {
-    if (s.includes("تمرين")) return "color-exercise";
     if (s.includes("كيمياء")) return "color-chemistry";
     if (s.includes("فيزياء")) return "color-physics";
     if (s.includes("أحياء"))  return "color-biology";
-    if (s.includes("رياضيات")) return "color-math";
     if (s.includes("عربي"))   return "color-arabic";
-    if (s.includes("إسلامية") || s.includes("حديث") || s.includes("معاني") || s.includes("سورة")) return "color-islamic";
     if (s.includes("مراجعة") || s.includes("راحة")) return "color-review";
     return "color-review";
   }
 
   function getSubjectTag(s) {
-    if (s.includes("تمرين")) return "تمرين";
     if (s.includes("كيمياء")) return "كيمياء";
     if (s.includes("فيزياء")) return "فيزياء";
     if (s.includes("أحياء"))  return "أحياء";
-    if (s.includes("رياضيات")) return "رياضيات";
     if (s.includes("عربي"))   return "عربي";
-    if (s.includes("إسلامية") || s.includes("حديث") || s.includes("معاني") || s.includes("سورة")) return "إسلامية";
     if (s.includes("مراجعة") || s.includes("راحة")) return "مراجعة";
     return "مراجعة";
   }
 
   function todayStr() {
     const d = new Date();
-    const y = d.getFullYear();
-    const m = String(d.getMonth()+1).padStart(2,"0");
-    const day = String(d.getDate()).padStart(2,"0");
-    return `${y}-${m}-${day}`;
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
   }
 
   function isPast(dateStr) {
@@ -689,21 +661,27 @@
   const CHECK_ICON = `<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
 
   let completed = {};
+  let workoutDone = {};
   try { completed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e) {}
+  try { workoutDone = JSON.parse(localStorage.getItem(WORKOUT_KEY) || "{}"); } catch(e) {}
+
   let activeWeek = null;
   let currentTab = "jadwal";
 
   function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(completed)); }
+  function saveWorkout() { localStorage.setItem(WORKOUT_KEY, JSON.stringify(workoutDone)); }
 
-  function getCompleted(date, idx) {
-    return !!(completed[date] && completed[date][idx]);
-  }
+  function getCompleted(date, idx) { return !!(completed[date] && completed[date][idx]); }
 
   function markDone(date, idx, total) {
     if (!completed[date]) completed[date] = new Array(total).fill(false);
     completed[date][idx] = !completed[date][idx];
-    save();
-    render();
+    save(); render();
+  }
+
+  function toggleWorkout(date) {
+    workoutDone[date] = !workoutDone[date];
+    saveWorkout(); renderWorkoutLog();
   }
 
   function totalStats() {
@@ -727,13 +705,14 @@
 
   function switchTab(tab) {
     currentTab = tab;
-    document.getElementById("tabJadwal").classList.toggle("active", tab === "jadwal");
-    document.getElementById("tabRoutine").classList.toggle("active", tab === "routine");
-    document.getElementById("pageJadwal").classList.toggle("active", tab === "jadwal");
-    document.getElementById("pageRoutine").classList.toggle("active", tab === "routine");
+    ["jadwal","workout","routine"].forEach(t => {
+      document.getElementById("tab" + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle("active", tab === t);
+      document.getElementById("page" + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle("active", tab === t);
+    });
     document.getElementById("weekNavBar").style.display = tab === "jadwal" ? "" : "none";
     document.getElementById("progressWrap").style.display = tab === "jadwal" ? "" : "none";
     document.getElementById("progressBarWrap").style.display = tab === "jadwal" ? "" : "none";
+    if (tab === "workout") renderWorkoutLog();
   }
 
   function renderWeekNav() {
@@ -744,16 +723,11 @@
       const { total, done } = weekStats(w);
       const allDone = done === total;
       const isActive = activeWeek === w;
-      const weekLabel = TASKS.find(t => t.week === w).weekLabel;
-      const shortLabel = `${w}`;
       const btn = document.createElement("button");
       btn.className = "week-btn" + (isActive ? " active" : "") + (allDone && !isActive ? " all-done" : "");
-      btn.textContent = shortLabel + (allDone ? " ✓" : "");
-      btn.title = weekLabel;
-      btn.onclick = () => {
-        activeWeek = (activeWeek === w) ? null : w;
-        render();
-      };
+      btn.textContent = w + (allDone ? " ✓" : "");
+      btn.title = TASKS.find(t => t.week === w).weekLabel;
+      btn.onclick = () => { activeWeek = (activeWeek === w) ? null : w; render(); };
       nav.appendChild(btn);
     });
   }
@@ -762,31 +736,23 @@
     const today = todayStr();
     const main = document.getElementById("mainContent");
     main.innerHTML = "";
-
     const weeks = [...new Set(TASKS.map(t => t.week))];
     const visibleWeeks = activeWeek === null ? weeks : [activeWeek];
 
     visibleWeeks.forEach(weekNum => {
       const wTasks = TASKS.filter(t => t.week === weekNum);
       const { total, done } = weekStats(weekNum);
-      const weekLabel = wTasks[0].weekLabel;
-
       const section = document.createElement("section");
       section.className = "week-section";
-
       const wHeader = document.createElement("div");
       wHeader.className = "week-header";
-      wHeader.innerHTML = `
-        <div class="week-title">${weekLabel}</div>
-        <div class="week-count">${done}/${total}</div>
-      `;
+      wHeader.innerHTML = `<div class="week-title">${wTasks[0].weekLabel}</div><div class="week-count">${done}/${total}</div>`;
       section.appendChild(wHeader);
 
       wTasks.forEach(task => {
         const isToday = task.date === today;
         const past = isPast(task.date);
         const allDone = task.subjects.every((_,i) => getCompleted(task.date, i));
-
         let cardClass = "day-card";
         if (isToday) cardClass += " is-today";
         else if (allDone) cardClass += " is-done";
@@ -813,60 +779,7 @@
                   ? `<span class="done-text">${CHECK_ICON} تم</span><span class="undo-text">↩ إلغاء</span>`
                   : "تم الإكمال"}
               </button>
-            </div>
-          `;
-        }).join("");
+            </div>`;
+        }).join(""); **...**
 
-        card.innerHTML = `
-          <div class="day-inner">
-            <div class="day-header">
-              <div class="day-header-left">
-                <div class="day-num">${task.day}</div>
-                <div>
-                  <div class="day-date">${formatDate(task.date)}</div>
-                  ${isToday ? '<div class="today-badge">اليوم</div>' : ""}
-                </div>
-              </div>
-              ${allDone ? `<div class="done-badge">${CHECK_ICON} مكتمل</div>` : ""}
-            </div>
-            <div class="tasks-list">${tasksHTML}</div>
-          </div>
-        `;
-
-        section.appendChild(card);
-      });
-
-      main.appendChild(section);
-    });
-  }
-
-  function renderProgress() {
-    const { total, done } = totalStats();
-    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-    document.getElementById("progressPercent").textContent = pct + "%";
-    document.getElementById("progressCount").textContent = `${done} / ${total}`;
-    document.getElementById("progressFill").style.width = pct + "%";
-  }
-
-  function render() {
-    renderProgress();
-    renderWeekNav();
-    renderMain();
-  }
-
-  (function init() {
-    const today = todayStr();
-    const todayTask = TASKS.find(t => t.date === today);
-    if (todayTask) activeWeek = todayTask.week;
-    else activeWeek = 1;
-    render();
-    if (todayTask) {
-      setTimeout(() => {
-        const el = document.getElementById(`day-${todayTask.date}`);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 200);
-    }
-  })();
-</script>
-</body>
-</html>
+_This response is too long to display in full._
