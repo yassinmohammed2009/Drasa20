@@ -253,7 +253,9 @@
       padding: 11px 20px; border-bottom: 1px solid #f1f5f9;
     }
     .schedule-day:last-child { border-bottom: none; }
-    .day-label { width: 80px; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+    .day-label {
+      width: 80px; font-size: 13px; font-weight: 700; flex-shrink: 0;
+    }
     .day-label.workout { color: #0891b2; }
     .day-label.rest { color: #94a3b8; }
     .day-desc { font-size: 13px; color: #475569; flex: 1; }
@@ -288,7 +290,9 @@
       font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px;
       background: #cffafe; color: #164e63; border: 1px solid #a5f3fc;
     }
-    .workout-entry-type.light { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+    .workout-entry-type.light {
+      background: #f0fdf4; color: #166534; border-color: #bbf7d0;
+    }
     .workout-btn {
       flex-shrink: 0; padding: 6px 14px; border-radius: 10px;
       font-size: 12px; font-weight: 600; border: none; cursor: pointer;
@@ -356,6 +360,7 @@
   <div class="page" id="pageWorkout" style="max-width:860px;margin:0 auto;padding:24px 20px 60px;">
     <div class="workout-page">
 
+      <!-- الجدول الأسبوعي -->
       <div class="weekly-schedule-card">
         <div class="weekly-schedule-header">📅 الجدول الأسبوعي</div>
         <div class="schedule-days">
@@ -397,6 +402,7 @@
         </div>
       </div>
 
+      <!-- الإحماء -->
       <div class="workout-info-card">
         <div class="workout-info-header">🔥 الإحماء (5 دقايق)</div>
         <div class="workout-info-body">
@@ -406,24 +412,58 @@
             <li><span class="warmup-dot"></span>نط وهمي دقيقة</li>
             <li><span class="warmup-dot"></span>تمطيط يدين ورجلين</li>
           </ul>
+
           <div class="main-ex-title">💪 التمرين الرئيسي (3 جولات)</div>
           <table class="ex-table">
             <thead>
-              <tr><th>التمرين</th><th>التكرار</th><th>العضلة</th></tr>
+              <tr>
+                <th>التمرين</th>
+                <th>التكرار</th>
+                <th>العضلة</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>سكوات</td><td>15</td><td><span class="muscle-badge">رجلين</span></td></tr>
-              <tr><td>ضغط صدر (Push-ups)</td><td>8–10</td><td><span class="muscle-badge">صدر / تراي</span></td></tr>
-              <tr><td>بلانك</td><td>25 ثانية</td><td><span class="muscle-badge">بطن</span></td></tr>
-              <tr><td>لانجز</td><td>10 لكل رجل</td><td><span class="muscle-badge">رجلين</span></td></tr>
-              <tr><td>باي بقناني مي (Biceps Curls)</td><td>15</td><td><span class="muscle-badge">باي</span></td></tr>
-              <tr><td>باي مطرقة (Hammer Curls)</td><td>12</td><td><span class="muscle-badge">باي</span></td></tr>
-              <tr><td>سوبرمان</td><td>12</td><td><span class="muscle-badge">ظهر</span></td></tr>
+              <tr>
+                <td>سكوات</td>
+                <td>15</td>
+                <td><span class="muscle-badge">رجلين</span></td>
+              </tr>
+              <tr>
+                <td>ضغط صدر (Push-ups)</td>
+                <td>8–10</td>
+                <td><span class="muscle-badge">صدر / تراي</span></td>
+              </tr>
+              <tr>
+                <td>بلانك</td>
+                <td>25 ثانية</td>
+                <td><span class="muscle-badge">بطن</span></td>
+              </tr>
+              <tr>
+                <td>لانجز</td>
+                <td>10 لكل رجل</td>
+                <td><span class="muscle-badge">رجلين</span></td>
+              </tr>
+              <tr>
+                <td>باي بقناني مي (Biceps Curls)</td>
+                <td>15</td>
+                <td><span class="muscle-badge">باي</span></td>
+              </tr>
+              <tr>
+                <td>باي مطرقة (Hammer Curls)</td>
+                <td>12</td>
+                <td><span class="muscle-badge">باي</span></td>
+              </tr>
+              <tr>
+                <td>سوبرمان</td>
+                <td>12</td>
+                <td><span class="muscle-badge">ظهر</span></td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
 
+      <!-- سجل التمارين -->
       <div class="workout-log-card">
         <div class="workout-log-header">
           <span>✅ سجل التمارين</span>
@@ -538,6 +578,7 @@
   const STORAGE_KEY = "study-tracker-v4";
   const WORKOUT_KEY = "workout-tracker-v1";
 
+  // ===== STUDY TASKS =====
   const TASKS = [
     // الأسبوع 1 (28/4 → 4/5)
     { date:"2026-04-28", week:1, weekLabel:"الأسبوع 1 (28/4 → 4/5)", day:1,  subjects:["كيمياء: ف7 مح1–2","أحياء: وراثة 1"] },
@@ -586,6 +627,7 @@
     { date:"2026-05-31", week:6, weekLabel:"الأسبوع 6 (28/5 → 31/5)", day:34, subjects:["كيمياء: ف5 مح7–8","أحياء: وراثة 32"] },
   ];
 
+  // ===== WORKOUT DAYS (28/4 → 26/6) =====
   const WORKOUT_DAYS = [
     { date:"2026-04-29", label:"الأربعاء 29/4", type:"full" },
     { date:"2026-05-01", label:"الجمعة 1/5",    type:"light" },
@@ -780,6 +822,76 @@
                   : "تم الإكمال"}
               </button>
             </div>`;
-        }).join(""); **...**
+        }).join("");
 
-_This response is too long to display in full._
+        card.innerHTML = `
+          <div class="day-inner">
+            <div class="day-header">
+              <div class="day-header-left">
+                <div class="day-num">${task.day}</div>
+                <div>
+                  <div class="day-date">${formatDate(task.date)}</div>
+                  ${isToday ? '<div class="today-badge">اليوم</div>' : ""}
+                </div>
+              </div>
+              ${allDone ? `<div class="done-badge">${CHECK_ICON} مكتمل</div>` : ""}
+            </div>
+            <div class="tasks-list">${tasksHTML}</div>
+          </div>`;
+
+        section.appendChild(card);
+      });
+      main.appendChild(section);
+    });
+  }
+
+  function renderWorkoutLog() {
+    const body = document.getElementById("workoutLogBody");
+    const stat = document.getElementById("workoutLogStat");
+    const total = WORKOUT_DAYS.length;
+    const done = WORKOUT_DAYS.filter(w => workoutDone[w.date]).length;
+    stat.textContent = `${done} / ${total}`;
+    body.innerHTML = WORKOUT_DAYS.map(w => {
+      const isDone = !!workoutDone[w.date];
+      const typeLabel = w.type === "light" ? "خفيف 20 دق" : "جسم كامل + باي 30 دق";
+      return `
+        <div class="workout-entry ${isDone ? "done-entry" : ""}">
+          <div class="workout-entry-left">
+            <span class="workout-entry-date">${w.label}</span>
+            <span class="workout-entry-type ${w.type === "light" ? "light" : ""}">${typeLabel}</span>
+          </div>
+          <button class="workout-btn ${isDone ? "is-done" : "not-done"}"
+            onclick="toggleWorkout('${w.date}')">
+            ${isDone
+              ? `<span class="done-text">${CHECK_ICON} تم</span><span class="undo-text">↩ إلغاء</span>`
+              : "تم الإكمال"}
+          </button>
+        </div>`;
+    }).join("");
+  }
+
+  function renderProgress() {
+    const { total, done } = totalStats();
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    document.getElementById("progressPercent").textContent = pct + "%";
+    document.getElementById("progressCount").textContent = `${done} / ${total}`;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+
+  function render() { renderProgress(); renderWeekNav(); renderMain(); }
+
+  (function init() {
+    const today = todayStr();
+    const todayTask = TASKS.find(t => t.date === today);
+    activeWeek = todayTask ? todayTask.week : 1;
+    render();
+    if (todayTask) {
+      setTimeout(() => {
+        const el = document.getElementById(`day-${todayTask.date}`);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 200);
+    }
+  })();
+</script>
+</body>
+</html>
